@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>BreezeCanReadWiFi</key>
+	<false/>
+	<key>BreezeCanUseEZ</key>
+	<false/>
+	<key>CFBundleDisplayName</key>
+	<string>Breeze</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.pavand.breeze</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>breeze</string>
+			</array>
+		</dict>
+	</array>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Breeze’s device SDK can discover compatible fans nearby during setup.</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Breeze connects your fan to Wi-Fi and sends device commands on your home network.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Breeze uses this permission to read your current Wi-Fi name and fill it in during fan setup. Breeze does not request your coordinates.</string>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,15 @@
+{
+  "planning": "compact",
+  "context_depth": "dependency",
+  "verification_depth": "impact",
+  "delegation": "none",
+  "reason_codes": [
+    "live-control-redesign",
+    "sdk-rename",
+    "widget-display-snapshot"
+  ],
+  "allowed_write_scope": [
+    "/Users/pavand/work/My Projects/Rea"
+  ],
+  "decision": "Use native toggles and visible icon choice grids preserving SDK values. Add SDK rename and app-group display snapshots for a separate connected-fan widget. Widget opens app controls; no unverified background SDK commands. Preserve pairing and demo isolation."
+}

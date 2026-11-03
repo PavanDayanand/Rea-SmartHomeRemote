@@ -1,0 +1,11 @@
+.DS_Store
+build/
+.build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+.swiftpm/
+iOS_SDK/
+Pods/
+Configuration/TuyaSecrets.plist
+build-local/

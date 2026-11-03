@@ -1,0 +1,915 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00251DB6A12A3F1FC07D9A8E /* ConnectedFanSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA7CFBE76A165EF807B5DB0 /* ConnectedFanSnapshot.swift */; };
+		0232B3C9E62CE0426C6CDB87 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254194106A325FB1CB2669AD /* HomeView.swift */; };
+		03D5364C7137A91330180090 /* AddFanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE18DB1F6B55CC3777505E1 /* AddFanView.swift */; };
+		0458A7224D6EB80F8232089F /* Fan.swift in Sources */ = {isa = PBXBuildFile; fileRef = D707606F5DE8762B7E1B000D /* Fan.swift */; };
+		05BF17BF4AAFBA7A93C19DB1 /* DeviceControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15D37E5C197B9AE35D7D980 /* DeviceControl.swift */; };
+		0B098800C9A45E775A7A9D8D /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B2136D6F94313AF9AB09D2 /* CountdownView.swift */; };
+		0CE85B19CC918C7DEBDD6A55 /* SetFanPowerIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE826060B03BDB8FAA09262D /* SetFanPowerIntent.swift */; };
+		0E5688BD0E2542EA74F3CDBC /* FanQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9685D0A6DD9F6F593A450B /* FanQuery.swift */; };
+		0EAF4D64B5D326409F668990 /* FanStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CAB499A1B55521F084821C /* FanStore.swift */; };
+		1223B8DE84BB73D2759BD63A /* FanDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829303388FD4DFFA74A0EEB8 /* FanDetailView.swift */; };
+		189DE1B7EFCAFAE248F86DD6 /* ConnectedDeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D988CB6AFC653A4BDE699203 /* ConnectedDeviceView.swift */; };
+		24BBD36DCB3B3360ED8FAADA /* FanMode+AppEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DA81A993CA812DBBD6D146 /* FanMode+AppEnum.swift */; };
+		2A9F82D8DB9A185EDEFB2BB8 /* SetFanSpeedIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28CD707D2A0A3EF83DE6F5 /* SetFanSpeedIntent.swift */; };
+		30DFA2BC2F1898A0BE4DA272 /* TuyaSecrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3247032EDF263B411E95675D /* TuyaSecrets.plist */; };
+		383083AAE2F7F0B13CE0E888 /* SetFanLightIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA61A2D8084A6E38833A969 /* SetFanLightIntent.swift */; };
+		38CF6B42EEEA24D81DC84BA7 /* ConnectedFansWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FE1AFA3678EE51741CC295 /* ConnectedFansWidgetView.swift */; };
+		3C4BAF1B573FE7176C17622C /* ConnectedFansWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8876C59326256FF4517266B /* ConnectedFansWidget.swift */; };
+		3DE127DE24647BBEB25E2672 /* ConnectedFansEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BE0C94BBF4F03B0307A6F0 /* ConnectedFansEntry.swift */; };
+		449CA5A1439C4B5AE88C0750 /* SDKSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AC66447165CF56EE445C5A /* SDKSetupView.swift */; };
+		4681CADDA51D1E92DC4DC0AE /* ConnectedHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5401EBCFEF602901D1A3A534 /* ConnectedHomeView.swift */; };
+		4692FC8C18823CE44D573A76 /* BreezeWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F1257873C3A56565C13ABF /* BreezeWidgetBundle.swift */; };
+		46FF8BF34C44B20E859D7411 /* BreezeShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB32A5009DACFDE206A5D4E /* BreezeShortcuts.swift */; };
+		48A4FD00F27E767FD0A7A16F /* PairingGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA41B55C0F904416DEC962C0 /* PairingGuideView.swift */; };
+		4AC8F6981BFD2363A84ADA9C /* SDKKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D496C32E17ACCE72E6CE5527 /* SDKKeychain.swift */; };
+		514E2E9D4BD015F7E41C4E57 /* BreezeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE08FB3877D5C9F3E8A82ABD /* BreezeUITests.swift */; };
+		558C1B8B83CF8F3E8B39489A /* HomeConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01428A8CD2BD9BB8B7BE8E54 /* HomeConnection.swift */; };
+		5E70A0530349C3EB0B5823BB /* FanWidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CBF133E2A628AAB29BDB06 /* FanWidgetEntry.swift */; };
+		5EC4A4EBD9524E049A193B3B /* SetFanTimerIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2538C02D32C05B8593EA2F8 /* SetFanTimerIntent.swift */; };
+		5ED70452C0D365EEB3D29890 /* BreezeWidgets.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3770F404A82A7AB695F00798 /* BreezeWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		61ACE67EDBCD2A8F9BE9E994 /* PairingStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0075B83D1135E4A89202708A /* PairingStage.swift */; };
+		6A169E308DD1A442F84F4594 /* FanWidgetConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E099DA863A53A0E8C87DBCDF /* FanWidgetConfiguration.swift */; };
+		6F390F63089925DB8376C2A4 /* FanHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770C5EC692D16814903128AE /* FanHeaderView.swift */; };
+		70F7269544AB9FE64EDF75F1 /* SetFanSpeedIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28CD707D2A0A3EF83DE6F5 /* SetFanSpeedIntent.swift */; };
+		70FD166256C77F1D7457B8D5 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B358E2A67BEAD2E734A479DB /* AboutView.swift */; };
+		743F96679D0EE584FE67FEF8 /* libPods-Breeze.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F76360E53E0572C0A865290 /* libPods-Breeze.a */; };
+		776E062F422FEF2FC6C90853 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3685E330EC5277A9DD5661C6 /* Assets.xcassets */; };
+		7877A59BF14186C3C82B0AB1 /* FanStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAA4C3D29415AB6F60A20F7 /* FanStorage.swift */; };
+		840853B7200E8A0367A4100B /* FanStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAA4C3D29415AB6F60A20F7 /* FanStorage.swift */; };
+		8A413DE25EEEDDA581A92D3A /* PairingProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1103398FBEDD8D2EDC61D824 /* PairingProgress.swift */; };
+		8C61B69562AF1A750C855BD2 /* ConnectionLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF900FBB540F6C5EF47087E0 /* ConnectionLoginView.swift */; };
+		92703DA0EA20AF3197192066 /* FanMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA3A0E4FE7E7977E821731 /* FanMode.swift */; };
+		93C8063C11B1EAF70EA693AB /* PairingStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0075B83D1135E4A89202708A /* PairingStage.swift */; };
+		9DC81127421AC8FD126E7281 /* SetFanModeIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CE495981296B31C6BD1F66 /* SetFanModeIntent.swift */; };
+		9EF25CF759D29150DDE8B40B /* SetFanTimerIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2538C02D32C05B8593EA2F8 /* SetFanTimerIntent.swift */; };
+		9F1A113EFD1FE655A909CC46 /* CurrentWiFi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F5ABEB18D3727EDCB6FB74 /* CurrentWiFi.swift */; };
+		A67D58B80C85D083A3A45DE9 /* ConnectionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814C5D64D6DBFA15448FAF23 /* ConnectionError.swift */; };
+		A7712BA9F8988E26E9E0A91B /* FanControlError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57DED1FC1A63B03DE3B95E6 /* FanControlError.swift */; };
+		A9D3F40E33B92C0CDDC5392F /* ConnectedFanSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA7CFBE76A165EF807B5DB0 /* ConnectedFanSnapshot.swift */; };
+		AABF42E1FEC1104FE2D056E0 /* SDKCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895E5E6A24735BE0300490F2 /* SDKCredentials.swift */; };
+		AC539057918EA3D930FA40A8 /* Fan.swift in Sources */ = {isa = PBXBuildFile; fileRef = D707606F5DE8762B7E1B000D /* Fan.swift */; };
+		AD97F1F20F9566D630883A9D /* FanEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E68821B90C91BA704847657 /* FanEntity.swift */; };
+		AF6F1BB83D7361D94DAD8403 /* FanMode+AppEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DA81A993CA812DBBD6D146 /* FanMode+AppEnum.swift */; };
+		B4394056AFEEB5B7E046E4C9 /* SpeedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120803B603D680427329D83F /* SpeedControlView.swift */; };
+		B43B764CD1E4D21587E3A39C /* BreezeFanWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FD63C57D55BB437D37858B /* BreezeFanWidget.swift */; };
+		B5FFAD29FA4A3FFDEDECEED7 /* PairingProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1103398FBEDD8D2EDC61D824 /* PairingProgress.swift */; };
+		BC43125D271B8BFFCF2A7C80 /* FanCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA15527D73FA9552364FCA47 /* FanCardView.swift */; };
+		C0429E5DF37C3567A49DEFF9 /* SetFanModeIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CE495981296B31C6BD1F66 /* SetFanModeIntent.swift */; };
+		C3FA99128D6BF62359103F33 /* CreateHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BB22293CF7C02C6887F8E4 /* CreateHomeView.swift */; };
+		C63C52BAA16DF4D5C47227FA /* FanQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9685D0A6DD9F6F593A450B /* FanQuery.swift */; };
+		CB7640DE8DD06FB565C7C00E /* FanStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CAB499A1B55521F084821C /* FanStore.swift */; };
+		D6F2E74812853EF24B729B76 /* ModePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9015E65208DE45BE0D7240 /* ModePickerView.swift */; };
+		DA907EFFB160C6B7CF3A77E4 /* BreezeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBA1CEBAB3242D7DE48B09B /* BreezeApp.swift */; };
+		DB1FB98D9AE84483ABC7B99A /* LightPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8CA27F1CD20C1DC049844D /* LightPickerView.swift */; };
+		DB7DF15B173AB3A837396162 /* FanWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6C42F957D00A3A9ADAFDC9 /* FanWidgetView.swift */; };
+		DFE224AB6BF7B8609BD6882B /* FanMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EA3A0E4FE7E7977E821731 /* FanMode.swift */; };
+		E23CAA9FBEA2777368680975 /* FanConnectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDF9C9E1707187EAAF75279 /* FanConnectionHeader.swift */; };
+		E8EDDD7362520E7EF5D68CC7 /* FanEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E68821B90C91BA704847657 /* FanEntity.swift */; };
+		E98A6F4CE4D077D459A5D6F3 /* DeviceControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581553E13DCCAC8BF7F72EBB /* DeviceControlView.swift */; };
+		ECFE87E77536AEE4E80EDEFE /* ConnectedFansProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A3407648F761AEA6C151EC /* ConnectedFansProvider.swift */; };
+		ED0AA4D84A95D90AE55B0DC1 /* SetFanPowerIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE826060B03BDB8FAA09262D /* SetFanPowerIntent.swift */; };
+		EE7D9EA953D9A82E9AA5A6C8 /* PairingStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D199A6BFC3310268B657EFE /* PairingStatusView.swift */; };
+		EF72C5DF7B69F3FD1FE46595 /* FanControlError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57DED1FC1A63B03DE3B95E6 /* FanControlError.swift */; };
+		F42C7F0819D0DFB4CF3B9869 /* DeviceControl+Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED15D09CE4E902DEDCF450B /* DeviceControl+Presentation.swift */; };
+		F493B7FF1F7DF9DF8D662BAF /* ConnectedDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FE0C11CA16C6C4EC019807 /* ConnectedDevice.swift */; };
+		F6241B906DAC52D5B2ED15DD /* SetFanLightIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA61A2D8084A6E38833A969 /* SetFanLightIntent.swift */; };
+		FEFAC6BA0FCAEAE40A20EDF5 /* FanWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EBA6CC4E3150729F278A0E /* FanWidgetProvider.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		14FBE275B7C4DE123938D938 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4B2ABCDECAC4B4A99CD3CED4 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 14FB2D0308303F0A578A7809B251D40B;
+			remoteInfo = Subproject;
+		};
+		1D6AF3BA2549D16845E50E52 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 98F54143AB4E86B28C3AFEE0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5019C8090EA2501B49718B47;
+			remoteInfo = Breeze;
+		};
+		58320C585DACDF448747393F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4B2ABCDECAC4B4A99CD3CED4 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E460D5B0416D36F66EE8EC89E5D2FA0A;
+			remoteInfo = Subproject;
+		};
+		842B7883354833597858F776 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 98F54143AB4E86B28C3AFEE0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 430A49CA695EA93A76957CDD;
+			remoteInfo = BreezeWidgets;
+		};
+		B37587382E64F4E33C60F8A8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4B2ABCDECAC4B4A99CD3CED4 /* Pods.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 33E98D053F5DB70537852EC273A0171E;
+			remoteInfo = "Pods-Breeze";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		750AF8B558936E3AECB9A82F /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5ED70452C0D365EEB3D29890 /* BreezeWidgets.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0075B83D1135E4A89202708A /* PairingStage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Shared/Models/PairingStage.swift; sourceTree = SOURCE_ROOT; };
+		01428A8CD2BD9BB8B7BE8E54 /* HomeConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Connectivity/HomeConnection.swift; sourceTree = SOURCE_ROOT; };
+		03F1257873C3A56565C13ABF /* BreezeWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreezeWidgets/BreezeWidgetBundle.swift; sourceTree = SOURCE_ROOT; };
+		1103398FBEDD8D2EDC61D824 /* PairingProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Shared/Models/PairingProgress.swift; sourceTree = SOURCE_ROOT; };
+		120803B603D680427329D83F /* SpeedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Features/Controls/SpeedControlView.swift; sourceTree = SOURCE_ROOT; };
+		1AAA4C3D29415AB6F60A20F7 /* FanStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Shared/Storage/FanStorage.swift; sourceTree = SOURCE_ROOT; };
+		22B2136D6F94313AF9AB09D2 /* CountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Features/Controls/CountdownView.swift; sourceTree = SOURCE_ROOT; };
+		254194106A325FB1CB2669AD /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Features/Home/HomeView.swift; sourceTree = SOURCE_ROOT; };
+		2CBA1CEBAB3242D7DE48B09B /* BreezeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/App/BreezeApp.swift; sourceTree = SOURCE_ROOT; };
+		31FE1AFA3678EE51741CC295 /* ConnectedFansWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreezeWidgets/ConnectedFansWidgetView.swift; sourceTree = SOURCE_ROOT; };
+		3247032EDF263B411E95675D /* TuyaSecrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Configuration/TuyaSecrets.plist; sourceTree = SOURCE_ROOT; };
+		3685E330EC5277A9DD5661C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Breeze/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		3770F404A82A7AB695F00798 /* BreezeWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; path = BreezeWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D199A6BFC3310268B657EFE /* PairingStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Features/Connection/PairingStatusView.swift; sourceTree = SOURCE_ROOT; };
+		3ED15D09CE4E902DEDCF450B /* DeviceControl+Presentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Breeze/Connectivity/DeviceControl+Presentation.swift"; sourceTree = SOURCE_ROOT; };
+		4351CA60CED3DA853630CF35 /* Breeze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = Breeze.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		47AC66447165CF56EE445C5A /* SDKSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Features/Connection/SDKSetupView.swift; sourceTree = SOURCE_ROOT; };
+		4B2ABCDECAC4B4A99CD3CED4 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
+		4C28CD707D2A0A3EF83DE6F5 /* SetFanSpeedIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Shared/Intents/SetFanSpeedIntent.swift; sourceTree = SOURCE_ROOT; };
+		5401EBCFEF602901D1A3A534 /* ConnectedHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Features/Connection/ConnectedHomeView.swift; sourceTree = SOURCE_ROOT; };
+		581553E13DCCAC8BF7F72EBB /* DeviceControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Features/Connection/DeviceControlView.swift; sourceTree = SOURCE_ROOT; };
+		5E68821B90C91BA704847657 /* FanEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Shared/Intents/FanEntity.swift; sourceTree = SOURCE_ROOT; };
+		5E9685D0A6DD9F6F593A450B /* FanQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Shared/Intents/FanQuery.swift; sourceTree = SOURCE_ROOT; };
+		6392D5BF775F21B9A557A12A /* Pods-Breeze.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breeze.release.xcconfig"; path = "Target Support Files/Pods-Breeze/Pods-Breeze.release.xcconfig"; sourceTree = "<group>"; };
+		64F5ABEB18D3727EDCB6FB74 /* CurrentWiFi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Connectivity/CurrentWiFi.swift; sourceTree = SOURCE_ROOT; };
+		6BA61A2D8084A6E38833A969 /* SetFanLightIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Shared/Intents/SetFanLightIntent.swift; sourceTree = SOURCE_ROOT; };
+		72C122CC14B02E893C512B70 /* Pods-Breeze.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breeze.debug.xcconfig"; path = "Target Support Files/Pods-Breeze/Pods-Breeze.debug.xcconfig"; sourceTree = "<group>"; };
+		770C5EC692D16814903128AE /* FanHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Features/Controls/FanHeaderView.swift; sourceTree = SOURCE_ROOT; };
+		78FD63C57D55BB437D37858B /* BreezeFanWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreezeWidgets/BreezeFanWidget.swift; sourceTree = SOURCE_ROOT; };
+		7EE18DB1F6B55CC3777505E1 /* AddFanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Features/Connection/AddFanView.swift; sourceTree = SOURCE_ROOT; };
+		80FE0C11CA16C6C4EC019807 /* ConnectedDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Connectivity/ConnectedDevice.swift; sourceTree = SOURCE_ROOT; };
+		814C5D64D6DBFA15448FAF23 /* ConnectionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Connectivity/ConnectionError.swift; sourceTree = SOURCE_ROOT; };
+		829303388FD4DFFA74A0EEB8 /* FanDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Features/Controls/FanDetailView.swift; sourceTree = SOURCE_ROOT; };
+		83BE0C94BBF4F03B0307A6F0 /* ConnectedFansEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreezeWidgets/ConnectedFansEntry.swift; sourceTree = SOURCE_ROOT; };
+		895E5E6A24735BE0300490F2 /* SDKCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Connectivity/SDKCredentials.swift; sourceTree = SOURCE_ROOT; };
+		8BDF9C9E1707187EAAF75279 /* FanConnectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Features/Connection/FanConnectionHeader.swift; sourceTree = SOURCE_ROOT; };
+		8D2AEFA1E9AFB74C5868FC47 /* BreezeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = BreezeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		90BB22293CF7C02C6887F8E4 /* CreateHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Features/Connection/CreateHomeView.swift; sourceTree = SOURCE_ROOT; };
+		95CE495981296B31C6BD1F66 /* SetFanModeIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Shared/Intents/SetFanModeIntent.swift; sourceTree = SOURCE_ROOT; };
+		95EBA6CC4E3150729F278A0E /* FanWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreezeWidgets/FanWidgetProvider.swift; sourceTree = SOURCE_ROOT; };
+		9F76360E53E0572C0A865290 /* libPods-Breeze.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Breeze.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F9015E65208DE45BE0D7240 /* ModePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Features/Controls/ModePickerView.swift; sourceTree = SOURCE_ROOT; };
+		A3DA81A993CA812DBBD6D146 /* FanMode+AppEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Breeze/Shared/Intents/FanMode+AppEnum.swift"; sourceTree = SOURCE_ROOT; };
+		A7CAB499A1B55521F084821C /* FanStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Shared/Storage/FanStore.swift; sourceTree = SOURCE_ROOT; };
+		B358E2A67BEAD2E734A479DB /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Features/About/AboutView.swift; sourceTree = SOURCE_ROOT; };
+		B3A3407648F761AEA6C151EC /* ConnectedFansProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreezeWidgets/ConnectedFansProvider.swift; sourceTree = SOURCE_ROOT; };
+		BA6C42F957D00A3A9ADAFDC9 /* FanWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreezeWidgets/FanWidgetView.swift; sourceTree = SOURCE_ROOT; };
+		BE826060B03BDB8FAA09262D /* SetFanPowerIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Shared/Intents/SetFanPowerIntent.swift; sourceTree = SOURCE_ROOT; };
+		BE8CA27F1CD20C1DC049844D /* LightPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Features/Controls/LightPickerView.swift; sourceTree = SOURCE_ROOT; };
+		C2538C02D32C05B8593EA2F8 /* SetFanTimerIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Shared/Intents/SetFanTimerIntent.swift; sourceTree = SOURCE_ROOT; };
+		C8876C59326256FF4517266B /* ConnectedFansWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreezeWidgets/ConnectedFansWidget.swift; sourceTree = SOURCE_ROOT; };
+		D0EA3A0E4FE7E7977E821731 /* FanMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Shared/Models/FanMode.swift; sourceTree = SOURCE_ROOT; };
+		D496C32E17ACCE72E6CE5527 /* SDKKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Connectivity/SDKKeychain.swift; sourceTree = SOURCE_ROOT; };
+		D5CBF133E2A628AAB29BDB06 /* FanWidgetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreezeWidgets/FanWidgetEntry.swift; sourceTree = SOURCE_ROOT; };
+		D707606F5DE8762B7E1B000D /* Fan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Shared/Models/Fan.swift; sourceTree = SOURCE_ROOT; };
+		D988CB6AFC653A4BDE699203 /* ConnectedDeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Features/Connection/ConnectedDeviceView.swift; sourceTree = SOURCE_ROOT; };
+		DA15527D73FA9552364FCA47 /* FanCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Features/Home/FanCardView.swift; sourceTree = SOURCE_ROOT; };
+		DA41B55C0F904416DEC962C0 /* PairingGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Features/Connection/PairingGuideView.swift; sourceTree = SOURCE_ROOT; };
+		DCA7CFBE76A165EF807B5DB0 /* ConnectedFanSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Shared/Models/ConnectedFanSnapshot.swift; sourceTree = SOURCE_ROOT; };
+		DF900FBB540F6C5EF47087E0 /* ConnectionLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Features/Connection/ConnectionLoginView.swift; sourceTree = SOURCE_ROOT; };
+		E099DA863A53A0E8C87DBCDF /* FanWidgetConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreezeWidgets/FanWidgetConfiguration.swift; sourceTree = SOURCE_ROOT; };
+		E15D37E5C197B9AE35D7D980 /* DeviceControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Connectivity/DeviceControl.swift; sourceTree = SOURCE_ROOT; };
+		E57DED1FC1A63B03DE3B95E6 /* FanControlError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/Shared/Storage/FanControlError.swift; sourceTree = SOURCE_ROOT; };
+		FCB32A5009DACFDE206A5D4E /* BreezeShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeze/App/BreezeShortcuts.swift; sourceTree = SOURCE_ROOT; };
+		FE08FB3877D5C9F3E8A82ABD /* BreezeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreezeUITests/BreezeUITests.swift; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		551273177C5DE4454FB5845B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				743F96679D0EE584FE67FEF8 /* libPods-Breeze.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5AD60958F5DE18E16EF76158 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60CDEB59DB53D3B659FE7B19 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2A8306FB11A7856C940EC3F1 /* Siri actions */ = {
+			isa = PBXGroup;
+			children = (
+				5E68821B90C91BA704847657 /* FanEntity.swift */,
+				A3DA81A993CA812DBBD6D146 /* FanMode+AppEnum.swift */,
+				5E9685D0A6DD9F6F593A450B /* FanQuery.swift */,
+				6BA61A2D8084A6E38833A969 /* SetFanLightIntent.swift */,
+				95CE495981296B31C6BD1F66 /* SetFanModeIntent.swift */,
+				BE826060B03BDB8FAA09262D /* SetFanPowerIntent.swift */,
+				4C28CD707D2A0A3EF83DE6F5 /* SetFanSpeedIntent.swift */,
+				C2538C02D32C05B8593EA2F8 /* SetFanTimerIntent.swift */,
+			);
+			name = "Siri actions";
+			sourceTree = "<group>";
+		};
+		3D727CE18FE61A9BFB33DAFA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9F76360E53E0572C0A865290 /* libPods-Breeze.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		435B7E5A2666214EDC216106 /* UI tests */ = {
+			isa = PBXGroup;
+			children = (
+				FE08FB3877D5C9F3E8A82ABD /* BreezeUITests.swift */,
+			);
+			name = "UI tests";
+			sourceTree = "<group>";
+		};
+		5D7ED5425E0F0CDB0C6BF018 /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				78FD63C57D55BB437D37858B /* BreezeFanWidget.swift */,
+				03F1257873C3A56565C13ABF /* BreezeWidgetBundle.swift */,
+				83BE0C94BBF4F03B0307A6F0 /* ConnectedFansEntry.swift */,
+				B3A3407648F761AEA6C151EC /* ConnectedFansProvider.swift */,
+				C8876C59326256FF4517266B /* ConnectedFansWidget.swift */,
+				31FE1AFA3678EE51741CC295 /* ConnectedFansWidgetView.swift */,
+				E099DA863A53A0E8C87DBCDF /* FanWidgetConfiguration.swift */,
+				D5CBF133E2A628AAB29BDB06 /* FanWidgetEntry.swift */,
+				95EBA6CC4E3150729F278A0E /* FanWidgetProvider.swift */,
+				BA6C42F957D00A3A9ADAFDC9 /* FanWidgetView.swift */,
+			);
+			name = Widgets;
+			sourceTree = "<group>";
+		};
+		870B3294C0CBD48AF6BBCC1B = {
+			isa = PBXGroup;
+			children = (
+				CBE7D790BBE2BD0D8B77EF39 /* App */,
+				9FBEC43473921AED70C48181 /* Connectivity */,
+				F89A8A9A159AE7808C8F4A5A /* Fan models */,
+				A49DB812EC022B7DD3029D43 /* Saving settings */,
+				2A8306FB11A7856C940EC3F1 /* Siri actions */,
+				C9D286F01C3A1ADA539F2990 /* Screens */,
+				5D7ED5425E0F0CDB0C6BF018 /* Widgets */,
+				435B7E5A2666214EDC216106 /* UI tests */,
+				3685E330EC5277A9DD5661C6 /* Assets.xcassets */,
+				3247032EDF263B411E95675D /* TuyaSecrets.plist */,
+				FBDC4F23F93125BBEEAE800C /* Products */,
+				9A9F198C611100318E949BDF /* Pods */,
+				3D727CE18FE61A9BFB33DAFA /* Frameworks */,
+				4B2ABCDECAC4B4A99CD3CED4 /* Pods.xcodeproj */,
+			);
+			sourceTree = "<group>";
+		};
+		9A9F198C611100318E949BDF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				72C122CC14B02E893C512B70 /* Pods-Breeze.debug.xcconfig */,
+				6392D5BF775F21B9A557A12A /* Pods-Breeze.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		9FBEC43473921AED70C48181 /* Connectivity */ = {
+			isa = PBXGroup;
+			children = (
+				80FE0C11CA16C6C4EC019807 /* ConnectedDevice.swift */,
+				814C5D64D6DBFA15448FAF23 /* ConnectionError.swift */,
+				64F5ABEB18D3727EDCB6FB74 /* CurrentWiFi.swift */,
+				3ED15D09CE4E902DEDCF450B /* DeviceControl+Presentation.swift */,
+				E15D37E5C197B9AE35D7D980 /* DeviceControl.swift */,
+				01428A8CD2BD9BB8B7BE8E54 /* HomeConnection.swift */,
+				895E5E6A24735BE0300490F2 /* SDKCredentials.swift */,
+				D496C32E17ACCE72E6CE5527 /* SDKKeychain.swift */,
+			);
+			name = Connectivity;
+			sourceTree = "<group>";
+		};
+		A49DB812EC022B7DD3029D43 /* Saving settings */ = {
+			isa = PBXGroup;
+			children = (
+				E57DED1FC1A63B03DE3B95E6 /* FanControlError.swift */,
+				1AAA4C3D29415AB6F60A20F7 /* FanStorage.swift */,
+				A7CAB499A1B55521F084821C /* FanStore.swift */,
+			);
+			name = "Saving settings";
+			sourceTree = "<group>";
+		};
+		C9D286F01C3A1ADA539F2990 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				B358E2A67BEAD2E734A479DB /* AboutView.swift */,
+				7EE18DB1F6B55CC3777505E1 /* AddFanView.swift */,
+				D988CB6AFC653A4BDE699203 /* ConnectedDeviceView.swift */,
+				5401EBCFEF602901D1A3A534 /* ConnectedHomeView.swift */,
+				DF900FBB540F6C5EF47087E0 /* ConnectionLoginView.swift */,
+				90BB22293CF7C02C6887F8E4 /* CreateHomeView.swift */,
+				581553E13DCCAC8BF7F72EBB /* DeviceControlView.swift */,
+				8BDF9C9E1707187EAAF75279 /* FanConnectionHeader.swift */,
+				DA41B55C0F904416DEC962C0 /* PairingGuideView.swift */,
+				3D199A6BFC3310268B657EFE /* PairingStatusView.swift */,
+				47AC66447165CF56EE445C5A /* SDKSetupView.swift */,
+				22B2136D6F94313AF9AB09D2 /* CountdownView.swift */,
+				829303388FD4DFFA74A0EEB8 /* FanDetailView.swift */,
+				770C5EC692D16814903128AE /* FanHeaderView.swift */,
+				BE8CA27F1CD20C1DC049844D /* LightPickerView.swift */,
+				9F9015E65208DE45BE0D7240 /* ModePickerView.swift */,
+				120803B603D680427329D83F /* SpeedControlView.swift */,
+				DA15527D73FA9552364FCA47 /* FanCardView.swift */,
+				254194106A325FB1CB2669AD /* HomeView.swift */,
+			);
+			name = Screens;
+			sourceTree = "<group>";
+		};
+		CBE7D790BBE2BD0D8B77EF39 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				2CBA1CEBAB3242D7DE48B09B /* BreezeApp.swift */,
+				FCB32A5009DACFDE206A5D4E /* BreezeShortcuts.swift */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
+		F89A8A9A159AE7808C8F4A5A /* Fan models */ = {
+			isa = PBXGroup;
+			children = (
+				DCA7CFBE76A165EF807B5DB0 /* ConnectedFanSnapshot.swift */,
+				D707606F5DE8762B7E1B000D /* Fan.swift */,
+				D0EA3A0E4FE7E7977E821731 /* FanMode.swift */,
+				1103398FBEDD8D2EDC61D824 /* PairingProgress.swift */,
+				0075B83D1135E4A89202708A /* PairingStage.swift */,
+			);
+			name = "Fan models";
+			sourceTree = "<group>";
+		};
+		FBDC4F23F93125BBEEAE800C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4351CA60CED3DA853630CF35 /* Breeze.app */,
+				3770F404A82A7AB695F00798 /* BreezeWidgets.appex */,
+				8D2AEFA1E9AFB74C5868FC47 /* BreezeUITests.xctest */,
+				2497E44BC5D0B2C419A8E786 /* libPods-Breeze.a */,
+				BAE5FE7F5602ED530A2F4C02 /* libYYModel.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		430A49CA695EA93A76957CDD /* BreezeWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 732D5722249A9698CA8D2DE8 /* Build configuration list for PBXNativeTarget "BreezeWidgets" */;
+			buildPhases = (
+				F440A55C613FAD80F1AFED28 /* Sources */,
+				60CDEB59DB53D3B659FE7B19 /* Frameworks */,
+				1F12D320D8B286E76EFDE7B8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BreezeWidgets;
+			productName = BreezeWidgets;
+			productReference = 3770F404A82A7AB695F00798 /* BreezeWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		5019C8090EA2501B49718B47 /* Breeze */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6E037350C75EBDB4ECA314BB /* Build configuration list for PBXNativeTarget "Breeze" */;
+			buildPhases = (
+				6AC5CFA422498752D80712F2 /* [CP] Check Pods Manifest.lock */,
+				837297DA13F2910965D10923 /* Sources */,
+				551273177C5DE4454FB5845B /* Frameworks */,
+				3A8BE895E53BF6A1F7AEB78B /* Resources */,
+				750AF8B558936E3AECB9A82F /* Embed App Extensions */,
+				D892EFBBB2133E2B7B4E0A43 /* [CP] Embed Pods Frameworks */,
+				E8E7316B8F8FD5D91D938F54 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6A9205BC8581F7E229F472BD /* PBXTargetDependency */,
+				B0801AB23F39A967E43DAC1B /* PBXTargetDependency */,
+			);
+			name = Breeze;
+			productName = Breeze;
+			productReference = 4351CA60CED3DA853630CF35 /* Breeze.app */;
+			productType = "com.apple.product-type.application";
+		};
+		73D12086D167FE307FD981FF /* BreezeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B44DDAE489BB639F9B20D9DD /* Build configuration list for PBXNativeTarget "BreezeUITests" */;
+			buildPhases = (
+				1206CB941299D7CB93A5500C /* Sources */,
+				5AD60958F5DE18E16EF76158 /* Frameworks */,
+				B3A957D0AA4059BE89C4AF5E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				077D61572076F556D06EB710 /* PBXTargetDependency */,
+			);
+			name = BreezeUITests;
+			productName = BreezeUITests;
+			productReference = 8D2AEFA1E9AFB74C5868FC47 /* BreezeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		98F54143AB4E86B28C3AFEE0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 2720;
+			};
+			buildConfigurationList = 62241A2D5B4B4F7C6271E2E7 /* Build configuration list for PBXProject "Breeze" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 870B3294C0CBD48AF6BBCC1B;
+			productRefGroup = FBDC4F23F93125BBEEAE800C /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = FBDC4F23F93125BBEEAE800C /* Products */;
+					ProjectRef = 4B2ABCDECAC4B4A99CD3CED4 /* Pods.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				5019C8090EA2501B49718B47 /* Breeze */,
+				430A49CA695EA93A76957CDD /* BreezeWidgets */,
+				73D12086D167FE307FD981FF /* BreezeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		2497E44BC5D0B2C419A8E786 /* libPods-Breeze.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libPods-Breeze.a";
+			remoteRef = 14FBE275B7C4DE123938D938 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BAE5FE7F5602ED530A2F4C02 /* libYYModel.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libYYModel.a;
+			remoteRef = 58320C585DACDF448747393F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1F12D320D8B286E76EFDE7B8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A8BE895E53BF6A1F7AEB78B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				776E062F422FEF2FC6C90853 /* Assets.xcassets in Resources */,
+				30DFA2BC2F1898A0BE4DA272 /* TuyaSecrets.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3A957D0AA4059BE89C4AF5E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6AC5CFA422498752D80712F2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Breeze-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D892EFBBB2133E2B7B4E0A43 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Breeze/Pods-Breeze-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Breeze/Pods-Breeze-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Breeze/Pods-Breeze-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E8E7316B8F8FD5D91D938F54 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Breeze/Pods-Breeze-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Breeze/Pods-Breeze-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Breeze/Pods-Breeze-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1206CB941299D7CB93A5500C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				514E2E9D4BD015F7E41C4E57 /* BreezeUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		837297DA13F2910965D10923 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA907EFFB160C6B7CF3A77E4 /* BreezeApp.swift in Sources */,
+				46FF8BF34C44B20E859D7411 /* BreezeShortcuts.swift in Sources */,
+				F493B7FF1F7DF9DF8D662BAF /* ConnectedDevice.swift in Sources */,
+				A67D58B80C85D083A3A45DE9 /* ConnectionError.swift in Sources */,
+				9F1A113EFD1FE655A909CC46 /* CurrentWiFi.swift in Sources */,
+				F42C7F0819D0DFB4CF3B9869 /* DeviceControl+Presentation.swift in Sources */,
+				05BF17BF4AAFBA7A93C19DB1 /* DeviceControl.swift in Sources */,
+				558C1B8B83CF8F3E8B39489A /* HomeConnection.swift in Sources */,
+				AABF42E1FEC1104FE2D056E0 /* SDKCredentials.swift in Sources */,
+				4AC8F6981BFD2363A84ADA9C /* SDKKeychain.swift in Sources */,
+				70FD166256C77F1D7457B8D5 /* AboutView.swift in Sources */,
+				03D5364C7137A91330180090 /* AddFanView.swift in Sources */,
+				189DE1B7EFCAFAE248F86DD6 /* ConnectedDeviceView.swift in Sources */,
+				4681CADDA51D1E92DC4DC0AE /* ConnectedHomeView.swift in Sources */,
+				8C61B69562AF1A750C855BD2 /* ConnectionLoginView.swift in Sources */,
+				C3FA99128D6BF62359103F33 /* CreateHomeView.swift in Sources */,
+				E98A6F4CE4D077D459A5D6F3 /* DeviceControlView.swift in Sources */,
+				E23CAA9FBEA2777368680975 /* FanConnectionHeader.swift in Sources */,
+				48A4FD00F27E767FD0A7A16F /* PairingGuideView.swift in Sources */,
+				EE7D9EA953D9A82E9AA5A6C8 /* PairingStatusView.swift in Sources */,
+				449CA5A1439C4B5AE88C0750 /* SDKSetupView.swift in Sources */,
+				0B098800C9A45E775A7A9D8D /* CountdownView.swift in Sources */,
+				1223B8DE84BB73D2759BD63A /* FanDetailView.swift in Sources */,
+				6F390F63089925DB8376C2A4 /* FanHeaderView.swift in Sources */,
+				DB1FB98D9AE84483ABC7B99A /* LightPickerView.swift in Sources */,
+				D6F2E74812853EF24B729B76 /* ModePickerView.swift in Sources */,
+				B4394056AFEEB5B7E046E4C9 /* SpeedControlView.swift in Sources */,
+				BC43125D271B8BFFCF2A7C80 /* FanCardView.swift in Sources */,
+				0232B3C9E62CE0426C6CDB87 /* HomeView.swift in Sources */,
+				E8EDDD7362520E7EF5D68CC7 /* FanEntity.swift in Sources */,
+				AF6F1BB83D7361D94DAD8403 /* FanMode+AppEnum.swift in Sources */,
+				0E5688BD0E2542EA74F3CDBC /* FanQuery.swift in Sources */,
+				383083AAE2F7F0B13CE0E888 /* SetFanLightIntent.swift in Sources */,
+				C0429E5DF37C3567A49DEFF9 /* SetFanModeIntent.swift in Sources */,
+				ED0AA4D84A95D90AE55B0DC1 /* SetFanPowerIntent.swift in Sources */,
+				70F7269544AB9FE64EDF75F1 /* SetFanSpeedIntent.swift in Sources */,
+				9EF25CF759D29150DDE8B40B /* SetFanTimerIntent.swift in Sources */,
+				A9D3F40E33B92C0CDDC5392F /* ConnectedFanSnapshot.swift in Sources */,
+				0458A7224D6EB80F8232089F /* Fan.swift in Sources */,
+				DFE224AB6BF7B8609BD6882B /* FanMode.swift in Sources */,
+				8A413DE25EEEDDA581A92D3A /* PairingProgress.swift in Sources */,
+				93C8063C11B1EAF70EA693AB /* PairingStage.swift in Sources */,
+				A7712BA9F8988E26E9E0A91B /* FanControlError.swift in Sources */,
+				7877A59BF14186C3C82B0AB1 /* FanStorage.swift in Sources */,
+				0EAF4D64B5D326409F668990 /* FanStore.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F440A55C613FAD80F1AFED28 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD97F1F20F9566D630883A9D /* FanEntity.swift in Sources */,
+				24BBD36DCB3B3360ED8FAADA /* FanMode+AppEnum.swift in Sources */,
+				C63C52BAA16DF4D5C47227FA /* FanQuery.swift in Sources */,
+				F6241B906DAC52D5B2ED15DD /* SetFanLightIntent.swift in Sources */,
+				9DC81127421AC8FD126E7281 /* SetFanModeIntent.swift in Sources */,
+				0CE85B19CC918C7DEBDD6A55 /* SetFanPowerIntent.swift in Sources */,
+				2A9F82D8DB9A185EDEFB2BB8 /* SetFanSpeedIntent.swift in Sources */,
+				5EC4A4EBD9524E049A193B3B /* SetFanTimerIntent.swift in Sources */,
+				00251DB6A12A3F1FC07D9A8E /* ConnectedFanSnapshot.swift in Sources */,
+				AC539057918EA3D930FA40A8 /* Fan.swift in Sources */,
+				92703DA0EA20AF3197192066 /* FanMode.swift in Sources */,
+				B5FFAD29FA4A3FFDEDECEED7 /* PairingProgress.swift in Sources */,
+				61ACE67EDBCD2A8F9BE9E994 /* PairingStage.swift in Sources */,
+				EF72C5DF7B69F3FD1FE46595 /* FanControlError.swift in Sources */,
+				840853B7200E8A0367A4100B /* FanStorage.swift in Sources */,
+				CB7640DE8DD06FB565C7C00E /* FanStore.swift in Sources */,
+				B43B764CD1E4D21587E3A39C /* BreezeFanWidget.swift in Sources */,
+				4692FC8C18823CE44D573A76 /* BreezeWidgetBundle.swift in Sources */,
+				3DE127DE24647BBEB25E2672 /* ConnectedFansEntry.swift in Sources */,
+				ECFE87E77536AEE4E80EDEFE /* ConnectedFansProvider.swift in Sources */,
+				3C4BAF1B573FE7176C17622C /* ConnectedFansWidget.swift in Sources */,
+				38CF6B42EEEA24D81DC84BA7 /* ConnectedFansWidgetView.swift in Sources */,
+				6A169E308DD1A442F84F4594 /* FanWidgetConfiguration.swift in Sources */,
+				5E70A0530349C3EB0B5823BB /* FanWidgetEntry.swift in Sources */,
+				FEFAC6BA0FCAEAE40A20EDF5 /* FanWidgetProvider.swift in Sources */,
+				DB7DF15B173AB3A837396162 /* FanWidgetView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		077D61572076F556D06EB710 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5019C8090EA2501B49718B47 /* Breeze */;
+			targetProxy = 1D6AF3BA2549D16845E50E52 /* PBXContainerItemProxy */;
+		};
+		6A9205BC8581F7E229F472BD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 430A49CA695EA93A76957CDD /* BreezeWidgets */;
+			targetProxy = 842B7883354833597858F776 /* PBXContainerItemProxy */;
+		};
+		B0801AB23F39A967E43DAC1B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-Breeze";
+			targetProxy = B37587382E64F4E33C60F8A8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1B379FEA10F6AFA13C1D1D59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 72C122CC14B02E893C512B70 /* Pods-Breeze.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Configuration/Breeze.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AQ256VD848;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Configuration/Breeze-Info.plist";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pavand.breeze;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		20155CD95BE56A02E308F08F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pavand.breezeuitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Breeze;
+			};
+			name = Release;
+		};
+		28FB61F997664CB50A1DF97F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = Configuration/BreezeWidgets.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AQ256VD848;
+				ENABLE_TESTABILITY = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Configuration/BreezeWidgets-Info.plist";
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pavand.breeze.widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3AE5769FD855C19EA14EB139 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		62D8252F8ECB35CFB03193A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6392D5BF775F21B9A557A12A /* Pods-Breeze.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Configuration/Breeze.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AQ256VD848;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Configuration/Breeze-Info.plist";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pavand.breeze;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C874AD783CAD7B7B66069FB5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = Configuration/BreezeWidgets.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AQ256VD848;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Configuration/BreezeWidgets-Info.plist";
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pavand.breeze.widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CA2CDED722ED5C2DF19D818A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		FE73E9B43687CB2A01855A2E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_TESTABILITY = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pavand.breezeuitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Breeze;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		62241A2D5B4B4F7C6271E2E7 /* Build configuration list for PBXProject "Breeze" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3AE5769FD855C19EA14EB139 /* Debug */,
+				CA2CDED722ED5C2DF19D818A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6E037350C75EBDB4ECA314BB /* Build configuration list for PBXNativeTarget "Breeze" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B379FEA10F6AFA13C1D1D59 /* Debug */,
+				62D8252F8ECB35CFB03193A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		732D5722249A9698CA8D2DE8 /* Build configuration list for PBXNativeTarget "BreezeWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28FB61F997664CB50A1DF97F /* Debug */,
+				C874AD783CAD7B7B66069FB5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B44DDAE489BB639F9B20D9DD /* Build configuration list for PBXNativeTarget "BreezeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE73E9B43687CB2A01855A2E /* Debug */,
+				20155CD95BE56A02E308F08F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 98F54143AB4E86B28C3AFEE0 /* Project object */;
+}

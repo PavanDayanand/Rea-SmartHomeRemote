@@ -1,0 +1,27 @@
+{
+  "mode": "implement",
+  "acceptance_criteria": [
+    "An Xcode project builds an iOS app and an embedded widget extension",
+    "Demo fans support power, speed, mode, light level and countdown",
+    "App Intents expose parameterized fan controls to Shortcuts",
+    "Widgets offer configurable demo fan controls",
+    "Demo and live connectivity are explicitly separated",
+    "A beginner guide explains the files and SwiftUI data flow",
+    "The user-provided basic SDK is integrated without adding AI features",
+    "Private SDK settings can be entered in the app and saved in Keychain",
+    "The connection flow compiles against actual SDK headers and setup UI tests pass",
+    "Wi-Fi detection uses public Apple APIs in eligible builds; Personal Team builds clearly offer manual entry without location prompts",
+    "Pairing and home use native fan artwork with Reduce Motion aware connecting animation",
+    "Pairing has independent token/hotspot/activation deadlines and shows real SDK stages and error codes",
+    "Unsupported EZ is blocked; AP guide uses supplied remote image and distinguishes fast from slow blinking",
+    "Foreground return during pairing does not refresh the cloud home on a no-internet fan hotspot",
+    "Live controls use icon selectors instead of enum dropdowns and support SDK renaming",
+    "A connected-fan widget reads last-reported display snapshots and opens live controls; demo widget stays distinct"
+  ],
+  "validators": [
+    "xcodebuild",
+    "fan-model-and-store-tests",
+    "project-structure-check"
+  ],
+  "hardware_control": "Requires the user to configure the app on their phone and activate one fan; compilation and setup UI checks are not proof of hardware compatibility"
+}
