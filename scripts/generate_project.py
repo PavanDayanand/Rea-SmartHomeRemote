@@ -62,8 +62,10 @@ def configuration_list(name, values):
             current["DEVELOPMENT_TEAM"] = saved_team
         current["SWIFT_OPTIMIZATION_LEVEL"] = "-Onone" if mode == "Debug" else "-O"
         if mode == "Debug":
-            current["SWIFT_ACTIVE_COMPILATION_CONDITIONS"] = "DEBUG"
+            current["SWIFT_ACTIVE_COMPILATION_CONDITIONS"] = "DEBUG BREEZE_APP" if name == "Breeze" else "DEBUG"
             current["ENABLE_TESTABILITY"] = "YES"
+        elif name == "Breeze":
+            current["SWIFT_ACTIVE_COMPILATION_CONDITIONS"] = "BREEZE_APP"
         configs.append(add(f"{name}-{mode}", f"isa = XCBuildConfiguration; name = {mode}; buildSettings = {{ {settings(current)} }};"))
     return add(f"{name}-configs", f"isa = XCConfigurationList; buildConfigurations = ({','.join(configs)},); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release;")
 
@@ -177,7 +179,7 @@ plists = {
         "BreezeCanUseEZ": False,
         "NSLocalNetworkUsageDescription": "Breeze connects your fan to Wi-Fi and sends device commands on your home network.",
         "NSBluetoothAlwaysUsageDescription": "Breeze’s device SDK can discover compatible fans nearby during setup.",
-        "NSLocationWhenInUseUsageDescription": "Breeze uses this permission to read your current Wi-Fi name and fill it in during fan setup. Breeze does not request your coordinates.",
+        "NSLocationWhenInUseUsageDescription": "Breeze uses your approximate location to show local weather. Coordinates are sent to Open-Meteo only when you request weather. Eligible builds can also read your Wi-Fi name during setup.",
         "CFBundleURLTypes": [{"CFBundleURLName": "com.pavand.breeze", "CFBundleURLSchemes": ["breeze"]}],
         "UISupportedInterfaceOrientations": ["UIInterfaceOrientationPortrait", "UIInterfaceOrientationLandscapeLeft", "UIInterfaceOrientationLandscapeRight"],
     },

@@ -15,7 +15,15 @@ extension DeviceControl {
     }
 
     func label(for choice: String) -> String {
-        choice.replacingOccurrences(of: "_", with: " ").capitalized
+        let title = name.lowercased()
+        if title.contains("timer") || title.contains("countdown") {
+            if choice == "0" { return "Off" }
+            if Int(choice) != nil { return choice + " h" }
+        }
+        if choice.lowercased() == "revers" { return "Reverse" }
+        return choice.replacingOccurrences(of: "_", with: " ")
+            .replacingOccurrences(of: "Level", with: "Level ", options: .caseInsensitive)
+            .capitalized
     }
 
     func symbol(for choice: String) -> String {

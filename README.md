@@ -2,9 +2,10 @@
 
 A small native SwiftUI app for learning and exploring better ceiling-fan controls.
 
-**The app now contains the basic Tuya SDK and a direct-pairing flow. Live pairing
-and device commands still need verification with your actual fan. Widgets and
-Shortcuts remain explicitly demo-only until live fan mappings are validated.**
+**Orient pairing and live controls are working. Connected-fan widgets now use
+background App Intents. Power on/off was verified on the real Pappu fan through
+iPhone Mirroring while the Home Screen remained visible. Demo Shortcuts remain
+separate from live controls.**
 
 ## Personal use and connectivity
 
@@ -72,9 +73,13 @@ shortcut named something like **Bedroom breeze**. Invoke that shortcut by name.
 App Shortcuts also advertises “Set fan speed in Breeze”; Siri can ask for missing
 parameters. Arbitrary HomeKit-style voice parsing is not promised.
 
-Add **Breeze → Your fan** from the Home Screen widget gallery. Edit the widget
-to select the bedroom or living-room demo. Both app and extension need the same
-working App Group to share state. Widget refresh timing is controlled by iOS.
+Add **Breeze → Connected fan** from the widget gallery, then Edit Widget to
+choose a paired fan. Small has power; medium adds speed; large and supported
+extra-large sizes add mode, timer, and light. The iOS 27 Extra Large Portrait
+family provides the tall iPhone panel and optional extra fan power shortcuts.
+Edit options are filtered by size. Buttons use background App Intents; tapping
+the widget's title still opens its controls. The separate Demo fan widget uses
+local examples. Widget refresh timing is controlled by iOS.
 
 ## Learn the code
 
@@ -96,8 +101,9 @@ explicitly starts them in Breeze. No credentials are extracted from Orient.
 
 `FanStore` remains isolated demo state. `HomeConnection` owns the vendor SDK,
 pairing and live device controls. Apple Home/HomeKit exposure is a separate bridge
-integration, not a consequence of adding App Intents. Live Siri/widget support is
-not yet wired into the SDK and is not presented as working.
+integration, not a consequence of adding App Intents. ControlConnectedFanIntent
+runs validated commands through the shared HomeConnection in the app process
+without requesting foreground presentation. Widgets never receive SDK secrets.
 
 ## Tests and project maintenance
 

@@ -8,6 +8,7 @@ import WidgetKit
 @MainActor
 @Observable
 final class HomeConnection: NSObject {
+    static let shared = HomeConnection()
     private(set) var isConfigured = false
     private(set) var isLoggedIn = false
     private(set) var isBusy = false
@@ -20,6 +21,8 @@ final class HomeConnection: NSObject {
     // SwiftUI watches this value. The vendor's home object below is not observable.
     private(set) var selectedHomeID: Int64?
     private(set) var devices: [ConnectedDevice] = []
+    var requestedDeviceID: String?
+    var navigationRequest = UUID()
     var message: String?
     var errorMessage: String?
 
@@ -42,6 +45,7 @@ final class HomeConnection: NSObject {
                 DeviceControl(id: "power", name: "Power", kind: "bool", isWritable: true, boolValue: true, numberValue: 0, textValue: "", minimum: 0, maximum: 0, step: 1, choices: []),
                 DeviceControl(id: "speed", name: "WindSpeed", kind: "enum", isWritable: true, boolValue: false, numberValue: 0, textValue: "2", minimum: 0, maximum: 0, step: 1, choices: ["1", "2", "3", "4", "5", "6"]),
                 DeviceControl(id: "mode", name: "Mode", kind: "enum", isWritable: true, boolValue: false, numberValue: 0, textValue: "Normal", minimum: 0, maximum: 0, step: 1, choices: ["Normal", "Turbo", "Sleep", "Breeze", "Reverse"]),
+                DeviceControl(id: "timer", name: "Timer", kind: "enum", isWritable: true, boolValue: false, numberValue: 0, textValue: "0", minimum: 0, maximum: 0, step: 1, choices: ["0", "2", "4", "6", "8"]),
                 DeviceControl(id: "light", name: "Light", kind: "enum", isWritable: true, boolValue: false, numberValue: 0, textValue: "Off", minimum: 0, maximum: 0, step: 1, choices: ["Off", "Level1", "Level2", "Level3"])
             ])]
         }
@@ -226,9 +230,57 @@ final class HomeConnection: NSObject {
                 return "\(control.displayName): \(value)"
             }.joined(separator: " · ")
             return ConnectedFanSnapshot(id: device.id, name: device.name,
-                isOnline: device.isOnline, summary: summary, updatedAt: .now)
+                isOnline: device.isOnline, summary: summary, updatedAt: .now,
+                controls: device.controls.filter { $0.isWritable && $0.kind == "enum" }.map {
+                    WidgetFanControl(id: $0.id, name: $0.displayName, symbol: $0.symbol, value: $0.textValue, choices: $0.choices)
+                },
+                isOn: device.controls.first(where: { $0.name.lowercased().contains("power") && $0.kind == "bool" })?.boolValue,
+                speed: device.controls.first(where: { $0.name.lowercased().contains("speed") })?.textValue,
+                speeds: device.controls.first(where: { $0.name.lowercased().contains("speed") && $0.kind == "enum" })?.choices)
         })
         WidgetCenter.shared.reloadTimelines(ofKind: "BreezeConnectedFans")
+    }
+
+    func performWidgetAction(deviceID: String, action: String, value: String) async throws {
+        for _ in 0..<20 where isBusy { try await Task.sleep(for: .milliseconds(500)) }
+        guard !isBusy, !isPairing else { throw ConnectionError.requestFailed }
+        guard isConfigured, isLoggedIn else { throw ConnectionError.notConfigured }
+        isBusy = true
+        defer { isBusy = false }
+        try await loadHome()
+        guard let device = devices.first(where: { $0.id == deviceID }) else { throw ConnectionError.missingDevice }
+        let name = action == "power" ? "power" : "speed"
+        guard let control = device.controls.first(where: {
+            action.hasPrefix("control:") ? $0.id == String(action.dropFirst(8)) : $0.name.lowercased().contains(name)
+        }), action.hasPrefix("control:") || ["power", "speed"].contains(action) else { throw ConnectionError.invalidValue }
+        let command: Any
+        if action == "power", control.kind == "bool", ["on", "off"].contains(value) { command = value == "on" }
+        else if control.kind == "enum" { command = value }
+        else { throw ConnectionError.invalidValue }
+        try await setValue(deviceID: deviceID, controlID: control.id, value: command)
+        try await refreshDevices()
+    }
+
+    func handleWidgetCommand(deviceID: String, action: String?, value: String?) {
+        Task {
+            // The app may already be refreshing after a cold launch.
+            for _ in 0..<20 where isBusy { try? await Task.sleep(for: .milliseconds(500)) }
+            guard !isBusy else { errorMessage = "Please wait for the home refresh, then try again."; return }
+            run {
+                try await self.loadHome()
+                guard let action, let value,
+                      let device = self.devices.first(where: { $0.id == deviceID }) else { return }
+                let name = action == "power" ? "power" : "speed"
+                guard let control = device.controls.first(where: {
+                    action.hasPrefix("control:") ? $0.id == String(action.dropFirst(8)) : $0.name.lowercased().contains(name)
+                }), action.hasPrefix("control:") || ["power", "speed"].contains(action) else { return }
+                let command: Any
+                if action == "power", control.kind == "bool", ["on", "off"].contains(value) { command = value == "on" }
+                else if (action == "speed" || action.hasPrefix("control:")), control.kind == "enum" { command = value }
+                else { throw ConnectionError.invalidValue }
+                try await self.setValue(deviceID: deviceID, controlID: control.id, value: command)
+            }
+        }
     }
 
     func renameDevice(deviceID: String, name: String) async throws {

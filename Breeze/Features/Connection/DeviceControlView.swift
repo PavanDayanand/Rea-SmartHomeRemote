@@ -4,10 +4,11 @@ import SwiftUI
 struct DeviceControlView: View {
     let deviceID: String
     let control: DeviceControl
+    @Environment(\.dynamicTypeSize) private var textSize
     @Environment(HomeConnection.self) private var connection
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: 12) {
             if control.kind == "bool" {
                 Toggle(isOn: Binding(get: { control.boolValue }, set: { send($0) })) {
                     Label(control.displayName, systemImage: control.symbol)
@@ -18,18 +19,33 @@ struct DeviceControlView: View {
                     .font(.headline)
                 switch control.kind {
                 case "enum":
-                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 72))], spacing: 10) {
+                    LazyVGrid(columns: choiceColumns, spacing: 8) {
                         ForEach(control.choices, id: \.self) { choice in
                             Button { send(choice) } label: {
-                                VStack(spacing: 8) {
-                                    Image(systemName: control.symbol(for: choice)).font(.title3)
-                                    Text(control.label(for: choice)).font(.subheadline.weight(.semibold))
-                                        .multilineTextAlignment(.center)
+                                VStack(spacing: 6) {
+                                    Group {
+                                        if control.name.lowercased().contains("speed") {
+                                            Text(control.label(for: choice)).font(.headline)
+                                        } else {
+                                            Image(systemName: control.symbol(for: choice)).font(.body)
+                                        }
+                                    }
+                                    .frame(width: 44, height: 44)
+                                    .background(control.textValue == choice ? Color.teal.opacity(0.25) : Color.secondary.opacity(0.12), in: .circle)
+                                    .overlay {
+                                        if control.textValue == choice {
+                                            Circle().strokeBorder(.teal, lineWidth: 2)
+                                        }
+                                    }
+                                    if !control.name.lowercased().contains("speed") {
+                                        Text(control.label(for: choice)).font(.caption2)
+                                            .multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
+                                    }
                                 }
-                                .frame(maxWidth: .infinity, minHeight: 66)
-                                .padding(6)
+                                .frame(maxWidth: .infinity)
+                                .contentShape(.rect)
                             }
-                            .buttonStyle(.bordered)
+                            .buttonStyle(.plain)
                             .tint(control.textValue == choice ? .teal : .secondary)
                             .accessibilityLabel("\(control.displayName), \(control.label(for: choice))")
                             .accessibilityAddTraits(control.textValue == choice ? .isSelected : [])
@@ -45,8 +61,16 @@ struct DeviceControlView: View {
                 }
             }
         }
-        .padding(.vertical, 8)
+        .padding(.vertical, 4)
         .disabled(!control.isWritable)
+    }
+
+    // Equal columns keep four light choices balanced across the full row.
+    private var choiceColumns: [GridItem] {
+        if textSize.isAccessibilitySize {
+            return [GridItem(.adaptive(minimum: 88))]
+        }
+        return Array(repeating: GridItem(.flexible(), spacing: 8), count: max(1, min(6, control.choices.count)))
     }
 
     private func send(_ value: Any) {

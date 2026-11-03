@@ -166,3 +166,98 @@ updates, Breeze saves snapshots and asks WidgetKit to reload. The Connected fan
 widget shows the first connected fan's last report with its update time and opens
 that fan's controls in the app. It does not send background device commands.
 The original demo widget remains separately named Demo fan.
+
+## Compact controls and widget shortcuts
+
+Speed choices use 44-point minimum tap targets with plain rounded backgrounds.
+Mode/light choices keep their symbols and readable labels. Power lives inside
+the fan header with confirmed on/off text. The home header is a compact row.
+
+ConnectedFanSnapshot now includes optional power and speed values, preserving
+older saved snapshots. Widget power/speed links open Breeze and send an explicit
+requested value after reloading the home. HomeConnection validates the actual
+device control before sending. These shortcuts open the app; they are not
+background widget commands. SDK reports still determine displayed state.
+
+## Editable widget panels and view environments
+
+ConnectedFansConfiguration is a WidgetConfigurationIntent. Its main fan and
+three optional extra fans appear in Edit Widget. ConnectedFanQuery supplies
+paired fans from shared snapshots. The timeline provider resolves saved IDs,
+not a hardcoded first fan. Large widgets show reported enum controls plus
+extra fan power shortcuts. Lighting and timer rows can be hidden in Edit Widget.
+
+A sheet must receive the shared observable objects used by its content. The
+widget route's NavigationStack now explicitly receives HomeConnection and
+FanStore with .environment(...). The phone crash report showed an assertion
+in EnvironmentValues.subscript.getter; the URL regression test opens and
+closes this sheet to check the fix. Widgets still open the app to send commands.
+
+## Background widget commands
+
+ControlConnectedFanIntent replaces URL links on control buttons. It declares
+background/dynamic runtime modes and never requests foreground continuation.
+An app-only compatibility conformance preserves app-process routing; the modern
+supportedModes declaration is present in both bundles. BREEZE_APP includes the
+SDK implementation only in the app, so the widget never links Tuya or reads
+credentials. Metadata inspection confirmed ForegroundContinuable routing with
+openAppWhenRun=false. The existing app session and Keychain remain unchanged.
+HomeConnection.shared serializes these actions, reloads capabilities, validates
+the command, and publishes it. The widget refreshes from device reports rather
+than inventing success. Open Breeze once if its account session needs attention.
+
+Widget configuration uses Switch(.widgetFamily): small/medium show just the fan
+picker, larger panels expose extra fans and lighting/timer visibility options.
+
+## Tall iPhone widgets and the glass remote
+
+The Notes-style tall family on iOS 27 is systemExtraLargePortrait. It is distinct
+from systemExtraLarge. ConnectedFansWidget now declares both. Standard large
+widgets use compact explicitly sized plain buttons and omit extra fan shortcuts;
+portrait widgets provide roomier controls and the optional extra fans.
+
+BreezeHomeTabs uses native Home and Settings tabs. Home rows put the detail
+button beside a separate glass power button, avoiding nested buttons. A selected
+ConnectedDevice presents the remote with sheet(item:), keeping navigation state
+in one value. ConnectedDeviceView has one ScrollView on a native glassEffect
+surface with transparent presentation background. The content can still scroll
+for accessibility text sizes. SDK behavior and background intents are unchanged.
+
+## Full-screen matte remote
+
+Fan routes now use fullScreenCover(item:) from both Home and widget links.
+FanRemoteHeader displays reported selected speed next to the native power
+toggle. The rest remains a small, data-driven list of controls on an opaque
+system background. Full-sheet glass and drawer styling were removed following
+the user's preference. HomeStatusSummary counts online running fans and lights
+from device reports; it does not invent weather or request location permission.
+
+## Fan dashboard and normal page navigation
+
+ConnectedHomeView owns a simple [String] navigation path. Home fan taps append
+the device ID; widget title requests replace the path with that device. Native
+NavigationStack supplies the horizontal transition, back button and edge swipe.
+BreezeHomeTabs selects Home for widget navigation. Fan routes have no modal
+presentation or Done button.
+
+FanRemoteHeader displays a native power segment and decorative fan symbol.
+RemoteControlTile shows each quick control's reported current setting. One
+expandedControlID selects the inline choice row. DeviceControlView sends the
+exact SDK values as before. The light row remains available below it.
+Animations respect Reduce Motion; rename is in the Fan options menu.
+
+## Home weather and refresh feedback
+
+HomeWeatherCard owns LocalWeather with @State. Tapping Use my location asks
+CoreLocation for one approximate foreground location. LocalWeather rounds the
+coordinates, requests Open-Meteo over HTTPS, and decodes WeatherReading. No
+location history, background tracking, API key, or AI service is involved.
+Denied permission and failed requests show retry text; weather is optional and
+does not block fan controls. Open-Meteo attribution is visible in the card.
+https://open-meteo.com/en/docs explains the current weather fields.
+
+HomeStatusSummary counts reported power and light states of online devices.
+The Home header animates fan blades only while SDK work is busy, respecting
+Reduce Motion. The remote uses equal flexible columns for short selector rows
+so four light choices occupy the entire width. Accessibility sizes retain an
+adaptive grid for readable labels.

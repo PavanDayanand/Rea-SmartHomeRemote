@@ -4,12 +4,12 @@
   "verification_depth": "impact",
   "delegation": "none",
   "reason_codes": [
-    "live-control-redesign",
-    "sdk-rename",
-    "widget-display-snapshot"
+    "remote-spacing",
+    "opt-in-location-weather",
+    "home-refresh-feedback"
   ],
   "allowed_write_scope": [
     "/Users/pavand/work/My Projects/Rea"
   ],
-  "decision": "Use native toggles and visible icon choice grids preserving SDK values. Add SDK rename and app-group display snapshots for a separate connected-fan widget. Widget opens app controls; no unverified background SDK commands. Preserve pairing and demo isolation."
+  "decision": "Keep approved fan dashboard and navigation. Balance selector columns, enlarge power control, add approximate-location weather using CoreLocation and Open-Meteo, and show refresh feedback in Home header. Verify signed build and affected UI tests."
 }

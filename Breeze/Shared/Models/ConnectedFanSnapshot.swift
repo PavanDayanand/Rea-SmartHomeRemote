@@ -7,6 +7,10 @@ struct ConnectedFanSnapshot: Codable, Identifiable, Sendable {
     let isOnline: Bool
     let summary: String
     let updatedAt: Date
+    var controls: [WidgetFanControl]? = nil
+    var isOn: Bool? = nil
+    var speed: String? = nil
+    var speeds: [String]? = nil
 
     static func load() -> [Self] {
         guard let data = UserDefaults(suiteName: FanStorage.appGroup)?.data(forKey: "connected.fans"),

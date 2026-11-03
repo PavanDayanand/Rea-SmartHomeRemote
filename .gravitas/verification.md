@@ -207,3 +207,183 @@ VERDICT: PASS
   build/live-controls-install.json, build/live-controls-launch.json.
 
 VERDICT: PASS
+
+## Compact UI and widget shortcuts — 2026-11-03
+
+- Replaced oversized system-bordered enum capsules with compact rounded tiles;
+  speed numbers use minimum 44-point targets and no repeated wind icon.
+- Power toggle and confirmed on/off caption moved into compact device header.
+  Home header reduced to a single home-name/device-count row.
+- Connected widgets use concise state with power and up to six reported speed
+  choices. Links open Breeze; commands wait for ongoing refresh, reload home,
+  resolve writable SDK controls and use existing validation. They do not run
+  in the widget background. No physical fan command was issued during tests.
+- Signed build passed: build/compact-controls-build.log. Four UI regression tests
+  passed: build/CompactControlsUITests.xcresult. git diff --check passed.
+- Installed on physical iPhone (sequence 2940) and launched successfully:
+  build/compact-controls-install.json and build/compact-controls-launch.json.
+
+VERDICT: PASS
+
+## Editable widgets, circular selectors and launch crash — 2026-11-03
+
+- Retrieved latest physical Breeze crash (213324) into ignored build/widget-crash.ips.
+  Triggered thread asserts in SwiftUI EnvironmentValues.subscript.getter.
+  Widget route sheet used ConnectedDeviceView with a required HomeConnection
+  environment; explicitly injected connection and store into that sheet.
+- New UI regression opens breeze://connected/preview, verifies controls and Done,
+  dismisses and verifies underlying controls remain. All five UI tests passed;
+  authoritative xcresult summary reports Passed, 5 passed, 0 failed, no warnings.
+  Evidence: build/EditableWidgetUITests.xcresult.
+- AppIntent widget configuration selects primary and three optional extra fans,
+  with lighting/timer visibility options. Large/extra-large use reported enum
+  snapshots; missing controls are omitted. User device state/credentials are not
+  fabricated. Widget commands still open Breeze and validate against live schema.
+- New selectors are 48-point circles with external labels and selected outlines.
+- Parallel device/simulator builds collided in CocoaPods shared temporary
+  resources-to-copy-Breeze.txt. Device retry after resource phase completion
+  passed: build/editable-widget-device-recovery.log. No source workaround used.
+- Installed on iPhone successfully, sequence 2948:
+  build/editable-widget-install.json. Physical widget-gallery editing/layout
+  and real widget command execution still need an on-phone check.
+
+VERDICT: PASS
+
+## Real background widget controls and compact remote — 2026-11-03
+
+- Replaced widget command Links with Button(intent:) for power, speed and exact
+  reported enum choices. OpenURL remains only for opening the detail screen.
+- Added ControlConnectedFanIntent with background/dynamic supportedModes and
+  openAppWhenRun=false. App-only ForegroundContinuable compatibility witness
+  selects the shared SDK process. Extracted metadata in BOTH bundles confirmed
+  supportedModes=9, ForegroundContinuable protocol, openAppWhenRun=false. The
+  compiler flag includes SDK calls only in the app; Keychain/entitlements unchanged.
+- Actual on-phone test via iPhone Mirroring: started with Pappu Off on Home Screen,
+  tapped Turn on and observed On · Speed 1 with Turn off. No app presentation.
+  Tapped Turn off, observed Off / Turn on on the same Home Screen. Initial power
+  restored. This verifies real SDK-reported background power, not just compilation.
+  Other controls use the same validated dispatch but were not changed physically.
+- Removed large detail header and section title; mode/timer/light choices use
+  single rows at standard type sizes. Accessibility sizes wrap and may scroll.
+- Five UI tests passed, including default-size hittability of Timer 8 and Light
+  Level3 without scrolling, plus prior deep-link regression:
+  build/BackgroundWidgetUITests.xcresult.
+- Size-specific configuration parameter summary compiled after UI tests:
+  build/background-widget-sized-build.log. App sizes small/medium show fan
+  selection; larger sizes expose extra fan and timer/light settings.
+- Real tested build installed (sequence 2956). Final size-settings build is
+  delivered via build/background-widget-sized-install.json.
+
+VERDICT: PASS
+
+### Cold widget-title presentation follow-up
+
+The final real-phone title tap exposed a blank sheet on first presentation even
+with environment injection. Replaced separate optional ID + isPresented flags
+with sheet(item:) on ConnectedFanEntity: one source of route state. Added loading
+feedback while home refresh runs. New URL regression also terminates the app
+and reopens the widget URL. Signed build passed after the route change:
+build/widget-route-final-build.log. This does not alter tested background actions.
+
+Final physical follow-up: installed item-route build successfully (sequence 2972).
+Tapped Pappu widget title from Home Screen after installation/cold launch; the
+correct Pappu sheet loaded. Visually confirmed live power, speed, mode, timer and
+light all visible without scrolling at the phone's current text size. This also
+confirms the previous blank-sheet regression is resolved on the user's phone.
+The real background power test was restored to Off before this title check.
+
+## Portrait widget, unclipped large panel, Home/Settings and glass sheet
+
+- Confirmed systemExtraLargePortrait exists for iOS 27 in installed WidgetKit
+  interface and official Apple documentation. Earlier statements that only iPad
+  gets a taller widget were incomplete. Added portrait to supportedFamilies.
+- Standard large: removed extra fan footer, removed bordered-button intrinsic
+  padding, sized speed/power/enum buttons, anchored content at top. Portrait uses
+  roomier rows and optional extra fan shortcuts. Metadata summary matches sizes.
+- Added Home and Settings TabView; live fan rows have distinct open/power buttons.
+  No Scenes tab. Settings shows actual session/home state and setup guidance.
+- Remote is a single native regular glassEffect surface with transparent sheet
+  background, dividers, and accessibility scroll fallback.
+- Device build passed after fixing NavigationLink initializer:
+  build/portrait-glass-fixed-build.log. Six UI tests passed including tabs,
+  default-size control hittability, rename, and warm/cold widget URL navigation:
+  build/PortraitGlassUITests.xcresult. git diff --check passed.
+- Installed on iPhone successfully, sequence 2980: build/portrait-glass-install.json.
+- Physical widget-gallery visual check was unavailable: iPhone Mirroring said
+  iPhone in Use. Simulator GUI app was unavailable. Tall family declaration and
+  compact layout compile; final physical widget rendering still needs checking.
+  Simulator display data was seeded with clearly named preview fixtures only.
+
+VERDICT: PASS
+
+## Full-screen matte remote and Home status summary — 2026-11-03
+
+- User likes Home direct actions and tall widget; design focus is device detail.
+- Home fan and widget-title routes now use fullScreenCover(item:), retaining
+  explicit observable environments. No drawer or full-sheet glass effect.
+- Added FanRemoteHeader with reported selected speed and adjacent native power
+  toggle. Controls remain schema-driven with accessible circular selectors.
+- Added real running-fan/light counts to Home while preserving existing actions.
+  No weather is invented and no location/WeatherKit access added.
+- Signed build passed: build/matte-remote-build.log. All six UI tests passed:
+  build/MatteRemoteUITests.xcresult, including default-size control visibility,
+  Home/Settings, rename, and warm/cold full-screen widget routes.
+- Installed on physical iPhone successfully, sequence 2988:
+  build/matte-remote-install.json. Physical visual review was unavailable
+  because iPhone Mirroring reported iPhone in Use.
+- Existing tall widgets and working background SDK actions were not changed.
+
+VERDICT: PASS
+
+## Native fan page and compact dashboard — 2026-11-03
+
+- User explicitly rejected modal/drawer motion and Done. Removed fan covers from
+  app and Home. ConnectedHomeView owns NavigationStack path; Home appends IDs,
+  widget title requests select Home and replace the path. Native back navigation
+  and edge swipe are retained. No custom Done or edit button on the fan page.
+- Added fan/power hero with native Off/On segment, compact speed/mode/timer
+  reported-state tiles, one inline expanded choice group, and an always-present
+  light group. Rename moved to options menu. Reduce Motion is respected.
+- Presentation labels map timer 0 to Off and hours to h, Revers to Reverse, and
+  Level1 to Level 1; SDK raw command values remain unchanged.
+- Six UI tests passed before label polish: build/DashboardPageUITests.xcresult.
+  Final two relevant UI tests passed after polish:
+  build/DashboardFinalControlsUITests.xcresult. These verify inline expansion,
+  rename, native back to Breeze, absence of Done, and a cold widget URL route.
+- Final signed build passed: build/dashboard-page-final-build.log. Installed
+  successfully on the physical iPhone, sequence 3004:
+  build/dashboard-page-final-install.json. git diff --check passed.
+- Physical visual review unavailable: phone remained in use in Mirroring. SDK
+  commands and background widget intents are unchanged; no fan command was
+  issued as part of these UI checks.
+
+VERDICT: PASS
+
+Visual follow-up: inspected Screenshots/Fan-dashboard-page.png in the simulator.
+The rotating ceiling-fan symbol rotated its stem as well; replaced only that
+decorative symbol with fanblades.fill for natural top-down blade rotation. Final
+signed compile passed: build/dashboard-hero-final-build.log. Final install
+evidence: build/dashboard-hero-final-install.json. Behavioral tests above precede
+this symbol-only edit; command and navigation logic are unchanged.
+
+## Home weather and remote spacing, 2026-11-03
+- Signed device build PASS: build/weather-home-build.log.
+- All 6 affected UI tests PASS: build/WeatherHomeUITests.xcresult. Includes
+  controls hittability, rename, pushed widget routes, Home/Settings and pairing.
+- Public sample-coordinate weather request succeeded and the real response
+  decoded in Swift; night icon assertion passed: build/WeatherResponseCheck.swift.
+- Simulator visual review: Screenshots/Spaced-fan-dashboard.png. Taller power
+  segment, increased vertical spacing, full-width evenly spaced light choices.
+- Physical install and launch succeeded: build/weather-home-install.json
+  (sequence 3020), build/weather-home-launch.json.
+- Weather uses explicit opt-in approximate foreground location and Open-Meteo
+  attribution. Physical location permission/network failure paths not exercised
+  on the user's phone; no real fan commands issued during UI verification.
+VERDICT: PASS (build, existing UI flows, weather response decoding); physical
+weather permission review remains user-observable on first Use my location tap.
+
+## Combined Home/weather card
+- Grouped home header and HomeWeatherCard inside one VStack/List row with a
+  divider, removing their separate section gap. Status counts remain below.
+- Signed build passed: build/combined-home-build.log. git diff --check passed.
+- Layout-only grouping; weather/account/command logic unchanged. No extra tests.

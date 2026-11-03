@@ -24,7 +24,7 @@
 	<key>NSLocalNetworkUsageDescription</key>
 	<string>Breeze connects your fan to Wi-Fi and sends device commands on your home network.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Breeze uses this permission to read your current Wi-Fi name and fill it in during fan setup. Breeze does not request your coordinates.</string>
+	<string>Breeze uses your approximate location to show local weather. Coordinates are sent to Open-Meteo only when you request weather. Eligible builds can also read your Wi-Fi name during setup.</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

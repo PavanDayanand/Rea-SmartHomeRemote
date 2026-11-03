@@ -16,7 +16,12 @@
     "Unsupported EZ is blocked; AP guide uses supplied remote image and distinguishes fast from slow blinking",
     "Foreground return during pairing does not refresh the cloud home on a no-internet fan hotspot",
     "Live controls use icon selectors instead of enum dropdowns and support SDK renaming",
-    "A connected-fan widget reads last-reported display snapshots and opens live controls; demo widget stays distinct"
+    "A connected-fan widget reads last-reported display snapshots and opens live controls; demo widget stays distinct",
+    "Fan detail opens full screen from Home and widget routes without a full-sheet glass surface",
+    "Home preserves direct fan actions and summarizes actual running fans and lights",
+    "Light choices fill their row evenly and fan controls have more vertical spacing with a taller power selector",
+    "Home offers opt-in approximate-location weather with denied/network failure feedback and visible attribution",
+    "Home shows actual fan/light counts and nonblocking header refresh animation respecting Reduce Motion"
   ],
   "validators": [
     "xcodebuild",
