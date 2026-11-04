@@ -1,140 +1,70 @@
 # Breeze
 
-A small native SwiftUI app for learning and exploring better ceiling-fan controls.
+A native SwiftUI remote for paired Orient fans. Built for personal use and learning.
+Pairing, live controls and background widget power commands have been verified
+with the real fan. Siri actions now use the same connected-device service.
 
-**Orient pairing and live controls are working. Connected-fan widgets now use
-background App Intents. Power on/off was verified on the real Pappu fan through
-iPhone Mirroring while the Home Screen remained visible. Demo Shortcuts remain
-separate from live controls.**
+## Connect a fan
 
-## Personal use and connectivity
+Open Breeze, configure your personal Tuya SDK settings if needed, sign in,
+create a home, and tap +. Follow the remote pairing guide and use a 2.4 GHz home
+network. The basic device SDK uses its cloud for login, pairing and control;
+this is not an offline-only controller. Credentials stay in the app's Keychain.
+Widgets receive display snapshots, never credentials or Wi-Fi passwords.
 
-This is a personal development build. It includes no AI features, AI SDKs, model
-inference, voice generation, or chat. No on-device AI is needed for the controls.
-The vendor's basic connectivity SDK still uses its cloud for account login and
-pairing tokens; this is not an offline-only implementation.
+## Siri and Shortcuts
 
-On the updated iPhone app:
+Open Breeze once after installing. Go to Settings → Siri & Shortcuts and choose
+a default fan. With only one fan it is selected automatically; otherwise Siri
+asks which fan unless you name one or select a default.
 
-1. On your Mac, open Tuya Developer Platform → Breeze → Get Key → iOS.
-2. Paste the AppKey and AppSecret into Breeze's **Connect Breeze** screen on the
-   phone. They are stored in that phone's Keychain; keep them out of chat/logs.
-3. Create a Breeze device account with an email verification code, or sign in to
-   an existing Breeze device account. This is separate from an Orient login.
-4. Create a home, tap **+**, and prepare one fan for pairing using its manual.
-5. Enter the home 2.4 GHz network's name and password. In AP mode Breeze requests
-   its token first, then asks you to join the fan's hotspot in Settings and return.
-6. After successful activation, control the device using its own reported schema.
+Available live actions:
+- Turn on fan
+- Turn off fan
+- Set fan speed
+- Increase fan speed
+- Decrease fan speed
 
-Existing fan ownership may require unbinding/re-pairing. Test one fan first. The
-new screens never report success until the SDK returns a device activation result.
-Passwords and pairing tokens are not logged or stored in shared demo preferences.
+Try “Hey Siri, turn on the fan in Breeze” or “Hey Siri, increase fan speed in
+Breeze”. Automatic App Shortcut phrases include the app name. For an exact
+phrase such as “Turn on Pawan fan”, create a shortcut in Apple's Shortcuts app,
+add the matching Breeze action, select the fan, and give the shortcut that name.
 
-The live controller is `Breeze/Connectivity/HomeConnection.swift`. The device SDK
-is intentionally isolated from the native SwiftUI screens. These are real SDK
-calls, but compilation alone does not establish hardware compatibility. Controls
-display the fan's reported state rather than treating command submission as a
-confirmed physical change.
+Relative speed reads the current device report before moving one supported
+level. It respects minimum/maximum and asks you to turn on an off fan first.
+Offline fans, missing login and unsupported values return errors. A successful
+SDK command is not a measurement of physical blade movement. Spoken Siri
+recognition still needs testing on the user's phone and Siri language.
 
-## Open and run
+This uses Apple's App Intents, not a separate AI model or AI service.
+Demo entrypoints, widgets and actions are no longer shipped. Legacy demo source
+is retained for learning and excluded by the project generator.
 
-1. Open `Breeze.xcworkspace` in Xcode 27.2 or later (the workspace includes Pods).
-2. Select the **Breeze** scheme and an iPhone simulator running iOS 27 or later.
-3. Press **Run** (⌘R).
+## Widgets
 
-For a physical phone, select your development team in **Signing & Capabilities**
-for both Breeze and BreezeWidgets. Use available bundle identifiers and register
-the same App Group on both targets. Update `FanStorage.appGroup` and
-`Configuration/Breeze.entitlements` together if the group name changes. App Group
-provisioning depends on your Apple developer account. Code signing is intentionally
-not tied to someone else's team.
+Choose Breeze → Connected fan in the widget gallery. Edit Widget selects its
+fan. Small provides power; medium adds speed; large and extra-large sizes offer
+mode, timer and lighting. Extra Large Portrait supports the tall iPhone panel
+and optional extra fan power buttons. Buttons run background intents; the title
+opens the fan's page. iOS controls refresh timing.
 
-## Demo controls you can still explore
+## Open and learn
 
-- Two demo fans, saved between launches.
-- Power, six demo speeds, Normal/Turbo/Sleep/Breeze/Reverse modes.
-- Independent light settings: Off and Levels 1–3.
-- Demo countdowns: 2, 4, 6, and 8 hours.
-- Small and medium interactive Home Screen widgets with a fan selector.
-- Five parameterized App Intents in Shortcuts: power, speed, light, mode, timer.
-- Widget links that open the matching fan's detail screen.
-- Native light/dark appearances and text that follows Dynamic Type.
+Open Breeze.xcworkspace in Xcode 27.2 or later. Select Breeze and your phone or
+an iOS 27+ simulator. Choose your signing team for app and widget targets.
+The vendor SDK lives in Breeze/Connectivity/HomeConnection.swift. App/Siri has
+five small, readable actions. BreezeShortcuts supplies phrases; ConnectedFanQuery
+resolves names and the default fan. SiriSettingsView explains configuration.
 
-The six-speed range is provisional: the screenshots did not show the full speed
-picker. No color-temperature controls are invented. There are no recurring
-schedules yet: reliable execution requires a device/cloud/always-on bridge timer,
-not an iPhone app waiting in the background.
+LEARNING.md contains the implementation history, including superseded designs.
+No WeatherKit, weather provider or weather location tracking is included.
 
-### Siri and widgets
+## Verification and maintenance
 
-After installing and opening Breeze once, search for **Breeze** actions in the
-Shortcuts app. Add **Set Demo Fan Speed**, select a fan and speed, and save a
-shortcut named something like **Bedroom breeze**. Invoke that shortcut by name.
-App Shortcuts also advertises “Set fan speed in Breeze”; Siri can ask for missing
-parameters. Arbitrary HomeKit-style voice parsing is not promised.
+Run `swift test` for shared model tests. Run BreezeUITests in Xcode for setup,
+Siri settings, fan controls and widget routes. Simulator tests cannot establish
+spoken Siri recognition or physical fan response.
 
-Add **Breeze → Connected fan** from the widget gallery, then Edit Widget to
-choose a paired fan. Small has power; medium adds speed; large and supported
-extra-large sizes add mode, timer, and light. The iOS 27 Extra Large Portrait
-family provides the tall iPhone panel and optional extra fan power shortcuts.
-Edit options are filtered by size. Buttons use background App Intents; tapping
-the widget's title still opens its controls. The separate Demo fan widget uses
-local examples. Widget refresh timing is controlled by iOS.
-
-## Learn the code
-
-Start with [LEARNING.md](LEARNING.md). This intentionally uses structs, a single
-observable demo store, small views and standard SwiftUI controls. The vendor's
-device SDK is isolated in the connectivity area. There are no repository/service/use-case layers or dependency
-injection frameworks to learn first.
-
-## Hardware verification still needed
-
-The screens establish controls, not protocol IDs or credentials. The next hardware
-milestone is an authenticated **read-only status request** to one fan. We then
-verify a single power/speed command and map its reported status back to `Fan`.
-
-The chosen route is the official basic device SDK and direct pairing, not an
-account link to another remote-control app. Wi-Fi connectivity alone does not
-prove compatibility. Pairing and command submission occur only when the user
-explicitly starts them in Breeze. No credentials are extracted from Orient.
-
-`FanStore` remains isolated demo state. `HomeConnection` owns the vendor SDK,
-pairing and live device controls. Apple Home/HomeKit exposure is a separate bridge
-integration, not a consequence of adding App Intents. ControlConnectedFanIntent
-runs validated commands through the shared HomeConnection in the app process
-without requesting foreground presentation. Widgets never receive SDK secrets.
-
-## Tests and project maintenance
-
-Run core behavior tests on the Mac:
-
-```sh
-swift test --scratch-path build/swift-tests
-```
-
-Build app and widget without signing:
-
-```sh
-xcodebuild -workspace Breeze.xcworkspace -scheme Breeze \
-  -destination 'generic/platform=iOS Simulator' \
-  -derivedDataPath build/DerivedData CODE_SIGNING_ALLOWED=NO build
-```
-
-UI test source is included in `BreezeUITests`; run it on a working iOS 27+
-simulator. These tests cannot establish that Siri recognizes speech or that
-an Orient fan responds. Widget and Siri behavior need on-device validation.
-
-After adding/removing a Swift file, run `python3 scripts/generate_project.py`,
-then `pod install` to restore SDK integration. Normal Swift edits need neither.
-The generator preserves selected signing teams. The icon is drawn by
-`swift scripts/create_icon.swift`.
-
-## Deliberate limits
-
-The demo preferences are intentionally simple. Separate processes read the latest
-saved fan before each change, but simultaneous changes are not an atomic
-transaction. A real device controller will need serialized commands and device
-state reconciliation. Demo timers reconcile on refresh, not via guaranteed
-background execution. This is a learning foundation, not a finished hardware
-integration or an App Store release.
+After adding/removing Swift files run `python3 scripts/generate_project.py`, then
+`pod install`. Build the workspace, not the standalone project. The generator
+preserves your signing team and excludes legacy demo surfaces and intents.

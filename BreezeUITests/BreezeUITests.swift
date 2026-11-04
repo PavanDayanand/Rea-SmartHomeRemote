@@ -74,33 +74,14 @@ final class BreezeUITests: XCTestCase {
     }
 
     @MainActor
-    func testFanControlsAndDemoDisclosure() {
-        let app = XCUIApplication()
-        app.launchArguments = ["--demo", "--connection-preview"]
-        app.launch()
-        XCTAssertTrue(app.staticTexts["Demo home"].waitForExistence(timeout: 5))
-        app.buttons["fan.bedroom.details"].tap()
-        XCTAssertTrue(app.buttons["speed.3"].waitForExistence(timeout: 5))
-        app.buttons["speed.3"].tap()
-        // LabeledContent exposes its title and value as one accessibility label.
-        XCTAssertTrue(app.staticTexts["Fan, On · Speed 3"].waitForExistence(timeout: 5))
-        XCTAssertTrue(app.buttons["speed.3"].isSelected)
-        app.buttons["detail.power"].tap()
-        XCTAssertTrue(app.staticTexts["Fan, Off"].waitForExistence(timeout: 5))
-        let screenshot = XCTAttachment(screenshot: app.screenshot())
-        screenshot.name = "Fan controls"
-        screenshot.lifetime = .keepAlways
-        add(screenshot)
-    }
-
-    @MainActor
-    func testConnectionSetupIsSeparateFromDemo() {
+    func testLiveSiriSettingsAndNoDemoEntry() {
         let app = XCUIApplication()
         app.launchArguments = ["--connection-preview"]
         app.launch()
-        XCTAssertTrue(app.staticTexts["Connect Breeze"].waitForExistence(timeout: 5))
-        XCTAssertFalse(app.staticTexts["Demo home"].exists)
-        app.buttons["Explore demo controls"].tap()
-        XCTAssertTrue(app.staticTexts["Demo home"].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.buttons["Explore demo controls"].exists)
+        app.tabBars.buttons["Settings"].tap()
+        app.buttons["Siri & Shortcuts"].tap()
+        XCTAssertTrue(app.navigationBars["Siri & Shortcuts"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Hey Siri, increase fan speed in Breeze"].exists)
     }
 }

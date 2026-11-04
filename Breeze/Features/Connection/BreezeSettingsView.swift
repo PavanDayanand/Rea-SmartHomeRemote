@@ -11,6 +11,11 @@ struct BreezeSettingsView: View {
                     LabeledContent("Fans", value: connection.devices.count.formatted())
                     Label(connection.isLoggedIn ? "Account connected" : "Sign in from Home", systemImage: "person.crop.circle")
                 }
+                Section("Siri") {
+                    NavigationLink { SiriSettingsView() } label: {
+                        Label("Siri & Shortcuts", systemImage: "waveform")
+                    }
+                }
                 Section("Widgets") {
                     Label("Controls without opening the app", systemImage: "square.grid.2x2")
                     Text("Long-press a widget and choose Edit Widget to select its fan. Small has power, medium adds speed, and large adds mode, timer and lighting.")

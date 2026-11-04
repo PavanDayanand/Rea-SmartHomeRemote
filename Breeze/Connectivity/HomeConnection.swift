@@ -1,6 +1,7 @@
 import Foundation
 import Observation
 import WidgetKit
+import AppIntents
 @preconcurrency import ThingSmartHomeKit
 
 /// All vendor calls live here. SwiftUI screens only call these plain methods.
@@ -239,12 +240,13 @@ final class HomeConnection: NSObject {
                 speeds: device.controls.first(where: { $0.name.lowercased().contains("speed") && $0.kind == "enum" })?.choices)
         })
         WidgetCenter.shared.reloadTimelines(ofKind: "BreezeConnectedFans")
+        BreezeShortcuts.updateAppShortcutParameters()
     }
 
     func performWidgetAction(deviceID: String, action: String, value: String) async throws {
         for _ in 0..<20 where isBusy { try await Task.sleep(for: .milliseconds(500)) }
         guard !isBusy, !isPairing else { throw ConnectionError.requestFailed }
-        guard isConfigured, isLoggedIn else { throw ConnectionError.notConfigured }
+        guard isConfigured, isLoggedIn else { throw ConnectionError.signInRequired }
         isBusy = true
         defer { isBusy = false }
         try await loadHome()
@@ -256,9 +258,53 @@ final class HomeConnection: NSObject {
         let command: Any
         if action == "power", control.kind == "bool", ["on", "off"].contains(value) { command = value == "on" }
         else if control.kind == "enum" { command = value }
+        else if action == "speed", control.kind == "value", let number = Int(value) { command = number }
         else { throw ConnectionError.invalidValue }
         try await setValue(deviceID: deviceID, controlID: control.id, value: command)
         try await refreshDevices()
+    }
+
+    /// Relative speed must use a fresh device report, never the widget snapshot.
+    func changeSpeed(deviceID: String, increase: Bool) async throws -> String {
+        for _ in 0..<20 where isBusy { try await Task.sleep(for: .milliseconds(500)) }
+        guard !isBusy, !isPairing else { throw ConnectionError.requestFailed }
+        guard isConfigured, isLoggedIn else { throw ConnectionError.signInRequired }
+        isBusy = true
+        defer { isBusy = false }
+        try await loadHome()
+        guard let device = devices.first(where: { $0.id == deviceID }), device.isOnline else {
+            throw ConnectionError.missingDevice
+        }
+        if device.controls.contains(where: { $0.name.lowercased().contains("power") && $0.kind == "bool" && !$0.boolValue }) {
+            throw ConnectionError.fanIsOff
+        }
+        guard let control = device.controls.first(where: { $0.name.lowercased().contains("speed") && $0.isWritable }) else {
+            throw ConnectionError.invalidValue
+        }
+        let current: String
+        let next: String
+        let command: Any
+        if control.kind == "enum" {
+            current = control.textValue
+            guard let selected = FanSpeedStep.next(current: current, choices: control.choices, increase: increase) else {
+                throw ConnectionError.invalidValue
+            }
+            next = selected
+            command = selected
+        } else if control.kind == "value" {
+            current = String(control.numberValue)
+            let selected = increase
+                ? min(control.maximum, control.numberValue + control.step)
+                : max(control.minimum, control.numberValue - control.step)
+            next = String(selected)
+            command = selected
+        } else { throw ConnectionError.invalidValue }
+        guard next != current else {
+            return "\(device.name) is already at its \(increase ? "highest" : "lowest") speed."
+        }
+        try await setValue(deviceID: deviceID, controlID: control.id, value: command)
+        try await refreshDevices()
+        return "\(device.name) set to speed \(next)."
     }
 
     func handleWidgetCommand(deviceID: String, action: String?, value: String?) {

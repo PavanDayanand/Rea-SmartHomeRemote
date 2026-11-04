@@ -2,6 +2,7 @@ import AppIntents
 
 /// Background commands reuse the SDK session in the app process, not widget storage.
 struct ControlConnectedFanIntent: AppIntent {
+    static var isDiscoverable: Bool { false }
     static let title: LocalizedStringResource = "Control connected fan"
     static var openAppWhenRun: Bool { false }
     static var supportedModes: IntentModes { [.background, .foreground(.dynamic)] }

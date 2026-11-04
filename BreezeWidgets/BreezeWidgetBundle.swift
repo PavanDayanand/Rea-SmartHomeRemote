@@ -5,6 +5,5 @@ import WidgetKit
 struct BreezeWidgetBundle: WidgetBundle {
     var body: some Widget {
         ConnectedFansWidget()
-        BreezeFanWidget()
     }
 }

@@ -261,3 +261,30 @@ The Home header animates fan blades only while SDK work is busy, respecting
 Reduce Motion. The remote uses equal flexible columns for short selector rows
 so four light choices occupy the entire width. Accessibility sizes retain an
 adaptive grid for readable labels.
+
+## Home summary without weather
+
+Weather was removed at the user's request. The Home List now uses one VStack
+row containing the home name and total fans, a divider, and HomeStatusSummary.
+There is no weather service or weather-related location request in the app.
+CurrentWiFi remains a separate setup helper, disabled for Personal Team builds.
+The earlier weather section above documents a removed implementation.
+
+## Live Siri actions, November 4
+
+App/Siri contains five small AppIntent structs. Each takes ConnectedFanEntity;
+the absolute-speed action also takes an integer. They execute in the app process
+so they can use the SDK session. Widget commands retain their existing routing.
+BreezeShortcuts advertises five actions with application-name phrases.
+ConnectedFanQuery implements EntityStringQuery so Siri can resolve fan names.
+SiriSettingsView stores only the chosen default fan ID in the shared preferences.
+
+HomeConnection.changeSpeed first loads a fresh home report while holding the
+same busy gate as widget commands. FanSpeedStep sorts numeric enum choices and
+moves one supported step. At a limit it returns a spoken explanation without
+sending a command. Unknown reports fail safely; off fans must be turned on first.
+Snapshots are used for fan discovery, never for relative speed decisions.
+
+Legacy demo SwiftUI views, widget files and intents are excluded from both
+compiled targets by generate_project.py. FanStore remains as a historical
+model/test exercise. It is no longer created by the app or advertised to Siri.

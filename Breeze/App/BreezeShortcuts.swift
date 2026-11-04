@@ -1,25 +1,21 @@
 import AppIntents
 
-/// These phrases appear automatically. You can also name your own shortcuts.
 struct BreezeShortcuts: AppShortcutsProvider {
     static var appShortcuts: [AppShortcut] {
-        AppShortcut(
-            intent: SetFanSpeedIntent(),
+        AppShortcut(intent: TurnOnConnectedFanIntent(),
+            phrases: ["Turn on \(\.$fan) in \(.applicationName)", "Turn on the fan in \(.applicationName)"],
+            shortTitle: "Turn on fan", systemImageName: "power")
+        AppShortcut(intent: TurnOffConnectedFanIntent(),
+            phrases: ["Turn off \(\.$fan) in \(.applicationName)", "Turn off the fan in \(.applicationName)"],
+            shortTitle: "Turn off fan", systemImageName: "power")
+        AppShortcut(intent: SetConnectedFanSpeedIntent(),
             phrases: ["Set fan speed in \(.applicationName)"],
-            shortTitle: "Fan speed",
-            systemImageName: "fan.ceiling"
-        )
-        AppShortcut(
-            intent: SetFanPowerIntent(),
-            phrases: ["Set fan power in \(.applicationName)"],
-            shortTitle: "Fan power",
-            systemImageName: "power"
-        )
-        AppShortcut(
-            intent: SetFanLightIntent(),
-            phrases: ["Set fan light in \(.applicationName)"],
-            shortTitle: "Fan light",
-            systemImageName: "lightbulb"
-        )
+            shortTitle: "Set speed", systemImageName: "wind")
+        AppShortcut(intent: IncreaseConnectedFanSpeedIntent(),
+            phrases: ["Increase \(\.$fan) speed in \(.applicationName)", "Increase fan speed in \(.applicationName)"],
+            shortTitle: "Increase speed", systemImageName: "plus")
+        AppShortcut(intent: DecreaseConnectedFanSpeedIntent(),
+            phrases: ["Decrease \(\.$fan) speed in \(.applicationName)", "Decrease fan speed in \(.applicationName)"],
+            shortTitle: "Decrease speed", systemImageName: "minus")
     }
 }

@@ -7,7 +7,6 @@ struct ConnectedHomeView: View {
     @State private var appliedInitialRoute = false
     @State private var path: [String] = []
     @State private var showingPairing = false
-    @State private var showingDemo = false
 
     var body: some View {
         NavigationStack(path: $path) {
@@ -24,11 +23,6 @@ struct ConnectedHomeView: View {
             }
             .navigationTitle("Breeze")
             .toolbar {
-                if !connection.isConfigured {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button("Explore demo controls", systemImage: "sparkles") { showingDemo = true }
-                    }
-                }
                 if connection.isLoggedIn && connection.hasHome {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button("Add fan", systemImage: "plus") { showingPairing = true }
@@ -46,7 +40,6 @@ struct ConnectedHomeView: View {
                 }
             }
             .sheet(isPresented: $showingPairing) { AddFanView().environment(connection) }
-            .sheet(isPresented: $showingDemo) { HomeView().environment(connection) }
             .alert("Connection issue", isPresented: Binding(
                 get: { connection.errorMessage != nil },
                 set: { if !$0 { connection.errorMessage = nil } }
@@ -86,12 +79,9 @@ struct ConnectedHomeView: View {
                             .font(.subheadline).foregroundStyle(.secondary)
                     }
                     Divider()
-                    HomeWeatherCard()
+                    HomeStatusSummary(devices: connection.devices)
                 }
                 .padding(.vertical, 4)
-            }
-            Section {
-                HomeStatusSummary(devices: connection.devices)
             }
             Section("Your devices") {
                 if connection.devices.isEmpty {

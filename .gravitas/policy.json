@@ -4,12 +4,12 @@
   "verification_depth": "impact",
   "delegation": "none",
   "reason_codes": [
-    "remote-spacing",
-    "opt-in-location-weather",
-    "home-refresh-feedback"
+    "live-siri-actions",
+    "remove-demo-exports",
+    "relative-speed-validation"
   ],
   "allowed_write_scope": [
     "/Users/pavand/work/My Projects/Rea"
   ],
-  "decision": "Keep approved fan dashboard and navigation. Balance selector columns, enlarge power control, add approximate-location weather using CoreLocation and Open-Meteo, and show refresh feedback in Home header. Verify signed build and affected UI tests."
+  "decision": "Expose five app-process Siri intents using connected fan entity names/default fan and real SDK commands. Remove demo entrypoints, widgets and intent exports from compiled targets. Verify numeric speed selection, signed metadata and affected UI flows."
 }

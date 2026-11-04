@@ -1,6 +1,8 @@
 import Foundation
 
 enum ConnectionError: LocalizedError {
+    case signInRequired
+    case fanIsOff
     case notConfigured
     case noHome
     case missingDevice
@@ -10,6 +12,8 @@ enum ConnectionError: LocalizedError {
 
     var errorDescription: String? {
         switch self {
+        case .signInRequired: "Open Breeze and sign in before using fan shortcuts."
+        case .fanIsOff: "The fan is off. Turn it on before changing speed."
         case .notConfigured: "Breeze’s SDK credentials have not been configured yet."
         case .noHome: "Create or select a home before adding a fan."
         case .missingDevice: "This device is unavailable. Refresh your home and try again."

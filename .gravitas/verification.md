@@ -387,3 +387,39 @@ weather permission review remains user-observable on first Use my location tap.
   divider, removing their separate section gap. Status counts remain below.
 - Signed build passed: build/combined-home-build.log. git diff --check passed.
 - Layout-only grouping; weather/account/command logic unchanged. No extra tests.
+
+## Widget space usage
+- Live small power and medium speed/power controls now use 46-point minimum
+  heights, matching the fuller demo proportions instead of 32-point controls.
+- Large/tall panels calculate choice-row height from available widget height,
+  accounting for labels and configured extra fans. Existing content margins,
+  configuration, command intents and deep links are unchanged.
+- Signed app + widget build passed: build/widget-spacing-build.log.
+- git diff --check passed. Physical family-by-family visual review remains
+  user-observable; no live fan commands were needed for this layout-only change.
+
+## Weather removed by request
+- Removed weather card/service/model (reversible source backup in ignored
+  build/RemovedWeatherSource). No weather endpoint or weather location requests
+  remain in active app source. Wi-Fi setup helper remains unchanged.
+- Combined home name, total fans, running fans and lights into one List row.
+- Updated generated location purpose text to describe only eligible Wi-Fi setup.
+- Signed build PASS: build/remove-weather-build.log. git diff --check PASS.
+- Source search confirmed no Open-Meteo/LocalWeather references in active app.
+
+## Live Siri and demo removal, November 4
+- Signed device app/widget build PASS: build/siri-build.log.
+- 13 shared model tests PASS: build/siri-model-tests.log. New cases cover
+  numeric ordering, supported gaps, upper/lower limits and invalid reports.
+- UI suite PASS: build/LiveSiriUITests.xcresult. Includes Siri settings/no demo,
+  existing setup/pairing, live control choices, rename and cold widget routing.
+- Built extract.actionsdata contains 5 automatic shortcuts and all 5 live
+  intents. Old demo power/speed/light intent names are absent. Internal widget
+  command is hidden from Shortcuts discovery.
+- Demo widget and legacy demo intent/UI sources excluded from generated targets;
+  retained as learning history, no demo root or demo store task in BreezeApp.
+- Physical install succeeded: build/siri-install.json, sequence 3132.
+- Opening the phone app was blocked by device lock: build/siri-launch.json.
+  Spoken Siri recognition and physical commands from these new intents remain
+  unverified. User must unlock/open Breeze once and try the documented phrases.
+- No physical fan commands were issued. git diff --check PASS.

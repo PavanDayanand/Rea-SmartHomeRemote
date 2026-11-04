@@ -3,7 +3,6 @@ import SwiftUI
 @main
 struct BreezeApp: App {
     // @State keeps one store alive as SwiftUI redraws the interface.
-    @State private var store = FanStore()
     @State private var connection = HomeConnection.shared
     @Environment(\.scenePhase) private var scenePhase
 
@@ -15,13 +14,10 @@ struct BreezeApp: App {
                 } else if ProcessInfo.processInfo.arguments.contains("--pairing-preview") {
                     // A disconnected screen for UI checks; it never simulates activation.
                     AddFanView()
-                } else if ProcessInfo.processInfo.arguments.contains("--demo") {
-                    HomeView()
                 } else {
                     BreezeHomeTabs()
                 }
             }
-                .environment(store)
                 .environment(connection)
                 .tint(.teal)
                 .onOpenURL { url in
@@ -35,7 +31,6 @@ struct BreezeApp: App {
                 }
                 .onChange(of: scenePhase) {
                     if scenePhase == .active {
-                        store.refresh()
                         // The fan's AP hotspot has no internet. Do not start a cloud
                         // home refresh when returning from Settings during pairing.
                         if connection.isPairing {
@@ -45,19 +40,7 @@ struct BreezeApp: App {
                         }
                     }
                 }
-                .task {
-                    store.refresh()
-                    // Demo timers are reconciled while the app is active or next opened.
-                    // A real timer must run on the fan or an always-on bridge.
-                    while !Task.isCancelled {
-                        do {
-                            try await Task.sleep(for: .seconds(15))
-                        } catch {
-                            return
-                        }
-                        store.refresh()
-                    }
-                }
+                .task { BreezeShortcuts.updateAppShortcutParameters() }
         }
     }
 }

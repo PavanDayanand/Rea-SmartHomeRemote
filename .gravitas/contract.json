@@ -2,10 +2,7 @@
   "mode": "implement",
   "acceptance_criteria": [
     "An Xcode project builds an iOS app and an embedded widget extension",
-    "Demo fans support power, speed, mode, light level and countdown",
     "App Intents expose parameterized fan controls to Shortcuts",
-    "Widgets offer configurable demo fan controls",
-    "Demo and live connectivity are explicitly separated",
     "A beginner guide explains the files and SwiftUI data flow",
     "The user-provided basic SDK is integrated without adding AI features",
     "Private SDK settings can be entered in the app and saved in Keychain",
@@ -16,12 +13,15 @@
     "Unsupported EZ is blocked; AP guide uses supplied remote image and distinguishes fast from slow blinking",
     "Foreground return during pairing does not refresh the cloud home on a no-internet fan hotspot",
     "Live controls use icon selectors instead of enum dropdowns and support SDK renaming",
-    "A connected-fan widget reads last-reported display snapshots and opens live controls; demo widget stays distinct",
     "Fan detail opens full screen from Home and widget routes without a full-sheet glass surface",
     "Home preserves direct fan actions and summarizes actual running fans and lights",
     "Light choices fill their row evenly and fan controls have more vertical spacing with a taller power selector",
-    "Home offers opt-in approximate-location weather with denied/network failure feedback and visible attribution",
-    "Home shows actual fan/light counts and nonblocking header refresh animation respecting Reduce Motion"
+    "Home shows actual fan/light counts and nonblocking header refresh animation respecting Reduce Motion",
+    "Home combines home name, fan count and live running-fan/light summary in one card; weather and its location requests are removed",
+    "Siri exposes connected-fan power on/off, absolute speed and relative increase/decrease with device-supported bounds",
+    "Siri uses named fan matching and a configurable default; multiple fans without a default require selection",
+    "Demo UI entrypoints, widgets and intents are absent from shipped metadata",
+    "Settings explains built-in Siri phrases and custom named Shortcuts"
   ],
   "validators": [
     "xcodebuild",

@@ -70,8 +70,20 @@ def configuration_list(name, values):
     return add(f"{name}-configs", f"isa = XCConfigurationList; buildConfigurations = ({','.join(configs)},); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release;")
 
 
-app_files = sorted(ROOT.glob("Breeze/**/*.swift"))
-widget_files = sorted(ROOT.glob("Breeze/Shared/**/*.swift")) + sorted(ROOT.glob("BreezeWidgets/*.swift"))
+# Legacy demo sources are retained for learning, but never compiled or exposed.
+def is_live_source(path):
+    relative = path.relative_to(ROOT).as_posix()
+    demo_intents = {"FanEntity.swift", "FanQuery.swift", "FanMode+AppEnum.swift",
+        "SetFanPowerIntent.swift", "SetFanSpeedIntent.swift", "SetFanLightIntent.swift",
+        "SetFanModeIntent.swift", "SetFanTimerIntent.swift"}
+    demo_widgets = {"BreezeFanWidget.swift", "FanWidgetView.swift", "FanWidgetProvider.swift",
+        "FanWidgetEntry.swift", "FanWidgetConfiguration.swift"}
+    return not (("/Intents/" in relative and path.name in demo_intents)
+        or (relative.startswith("BreezeWidgets/") and path.name in demo_widgets)
+        or any(relative.startswith("Breeze/Features/" + folder + "/") for folder in ["Home", "Controls", "About"]))
+
+app_files = sorted(p for p in ROOT.glob("Breeze/**/*.swift") if is_live_source(p))
+widget_files = sorted(p for p in list(ROOT.glob("Breeze/Shared/**/*.swift")) + list(ROOT.glob("BreezeWidgets/*.swift")) if is_live_source(p))
 test_files = sorted(ROOT.glob("BreezeUITests/*.swift"))
 all_files = sorted(set(app_files + widget_files + test_files))
 file_ids = {}
@@ -179,7 +191,7 @@ plists = {
         "BreezeCanUseEZ": False,
         "NSLocalNetworkUsageDescription": "Breeze connects your fan to Wi-Fi and sends device commands on your home network.",
         "NSBluetoothAlwaysUsageDescription": "Breeze’s device SDK can discover compatible fans nearby during setup.",
-        "NSLocationWhenInUseUsageDescription": "Breeze uses your approximate location to show local weather. Coordinates are sent to Open-Meteo only when you request weather. Eligible builds can also read your Wi-Fi name during setup.",
+        "NSLocationWhenInUseUsageDescription": "Breeze uses this permission to read your current Wi-Fi name during fan setup in eligible builds. Breeze does not request your coordinates.",
         "CFBundleURLTypes": [{"CFBundleURLName": "com.pavand.breeze", "CFBundleURLSchemes": ["breeze"]}],
         "UISupportedInterfaceOrientations": ["UIInterfaceOrientationPortrait", "UIInterfaceOrientationLandscapeLeft", "UIInterfaceOrientationLandscapeRight"],
     },
